@@ -1,6 +1,6 @@
 ﻿namespace Salon_samochodowy.DAL.Encje
 {
-    public class TEMP
+    public class Samochod
     {
         
     }
