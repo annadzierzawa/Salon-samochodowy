@@ -58,7 +58,7 @@ namespace Salon_samochodowy.DAL.Encje
         //metoda generuje string dla INSERT
         public string ToInsert()
         {
-            return $"('{Login}', '{Password}', {Imie},'{Nazwisko}', '{Premia}')";
+            return $"('{Login}', '{Password}', '{Imie}', '{Nazwisko}', '{Premia}')";
         }
 
         //przeciążenie dla Contains w listach

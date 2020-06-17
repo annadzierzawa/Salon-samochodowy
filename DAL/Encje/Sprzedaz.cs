@@ -22,5 +22,15 @@ namespace Salon_samochodowy.DAL.Encje
         }
         #endregion
 
+
+        #region Metody
+
+        //metoda generuje string dla INSERT
+        public string ToInsert()
+        {
+            return $"('{IdPracownika}', '{IdSamochodu}', '{Cena}')";
+        }
+
+        #endregion
     }
 }

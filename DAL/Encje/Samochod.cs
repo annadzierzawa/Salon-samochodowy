@@ -53,7 +53,14 @@ namespace Salon_samochodowy.DAL.Encje
             DataProdukcji = pracownik.DataProdukcji;
             Cena = pracownik.Cena;
         }
+        #endregion
 
+        #region Metody
+        //metoda generuje string dla INSERT
+        public string ToInsert()
+        {
+            return $"('{Nazwa}', '{Silnik}', '{Kolor}', '{KrajProdukcji}', '{DataProdukcji}', '{Cena}')";
+        }
         #endregion
     }
 }
