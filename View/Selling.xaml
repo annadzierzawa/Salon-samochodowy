@@ -16,8 +16,8 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ListView>
-            <Button Content="Opis pojazdu" Height="40" Width="350" Margin="5"/>
-            <Button Content="Sprzedaj" Height="40" Width="350" Margin="5"/>
+            <Button Content="Opis pojazdu" Height="40" Width="350" Margin="5" Background="#FF31577E" BorderBrush="Beige"/>
+            <Button Content="Sprzedaj" Height="40" Width="350" Margin="5" Background="#FF31577E" BorderBrush="Beige"/>
         </StackPanel>
     </Border>
 </UserControl>
