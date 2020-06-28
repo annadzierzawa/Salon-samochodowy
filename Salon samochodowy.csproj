@@ -155,8 +155,8 @@
     <Compile Include="DAL\Repozytoria\RepoSprzedazy.cs" />
     <Compile Include="DAL\Repozytoria\RepoPracowników.cs" />
     <Compile Include="DAL\Repozytoria\RepoSamochody.cs" />
-    <Compile Include="Model\TEMP.cs" />
-    <Compile Include="ViewModel\TEMP.cs" />
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="View\LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
