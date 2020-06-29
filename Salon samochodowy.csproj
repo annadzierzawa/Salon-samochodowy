@@ -122,13 +122,44 @@
     <Compile Include="View\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AboutAcc.xaml.cs">
+      <DependentUpon>AboutAcc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AboutCar.xaml.cs">
+      <DependentUpon>AboutCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddEmployee.xaml.cs">
+      <DependentUpon>AddEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Create.xaml.cs">
       <DependentUpon>Create.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SellersStats.xaml.cs">
+      <DependentUpon>SellersStats.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Selling.xaml.cs">
       <DependentUpon>Selling.xaml</DependentUpon>
     </Compile>
     <Page Include="View\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AboutAcc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AboutCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChangePassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,6 +195,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\SellersStats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Selling.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
