@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="Salon_samochodowy.View.AddEmployee"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Salon_samochodowy.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="1010" Background="#FFACACAC">
+    <Border Background="#FF5C99D6" CornerRadius="25"  Margin="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" >
+                <Label Content="Imie:" Margin="10" FontSize="15" Foreground="White"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White"/>
+                <Label Content="Nazwisko:" Margin="10" FontSize="15" Foreground="White"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White"/>
+                <Label Content="Login" Margin="10" FontSize="15" Foreground="White"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White"/>
+                <Label Content="Hasło:" Margin="10" FontSize="15" Foreground="White"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="button_Dodaj" Grid.Column="0" Content="Dodaj" Margin="10" Background="#FF31577E" BorderBrush="Beige"/>
+                    <Button x:Name="button_Edytuj" Grid.Column="1" Content="Edytuj" Margin="10" Background="#FF31577E" BorderBrush="Beige"/>
+                    <Button x:Name="button_Usun" Grid.Column="2" Content="Usuń" Margin="10" Background="#FF31577E" BorderBrush="Beige"/>
+                </Grid>
+            </StackPanel>
+
+            <ListBox  Grid.Row="0" Grid.Column="1" Margin="10" FontSize="20" Grid.ColumnSpan="2"/>
+        </Grid>
+    </Border>
+</UserControl>
