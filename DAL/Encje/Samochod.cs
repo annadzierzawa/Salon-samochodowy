@@ -24,7 +24,7 @@ namespace Salon_samochodowy.DAL.Encje
         {
             Id = sbyte.Parse(reader["idModelu"].ToString());
             Marka = reader["marka"].ToString();
-            ModelPojazdu = reader["modelpojazdu"].ToString();
+            ModelPojazdu = reader["model"].ToString();
             Silnik = reader["silnik"].ToString();
             Kolor = reader["kolor"].ToString();
             KrajProdukcji = reader["krajProdukcji"].ToString();

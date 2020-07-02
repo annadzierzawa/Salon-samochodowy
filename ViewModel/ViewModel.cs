@@ -19,10 +19,12 @@ namespace Salon_samochodowy.ViewModel
 
         public AddEmployeeVM AddEmployeeVm { get; set; }
         public LoginVM LoginVm { get; set; }
+        public AddCarVM AddCarVm { get; set; }
 
         public ViewModel()
         {
             AddEmployeeVm = new AddEmployeeVM(model);
+            AddCarVm = new AddCarVM(model);
             LoginVm = new LoginVM(model);
         }
 
