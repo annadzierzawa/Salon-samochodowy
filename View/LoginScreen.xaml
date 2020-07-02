@@ -23,6 +23,7 @@
             <TextBox Name="txtPassword" Background="#FFACACAC" Foreground="White" FontSize="15"  Margin="10" Text="{Binding LoginVm.Password}"/>
             <Button Name="buttonSubmit" Content="Submit" Margin="60 10" 
                     Background="#FF31577E" Foreground="White" FontSize="15"
+                    BorderBrush="Beige"
                     Command="{Binding LoginVm.Loguj}"
                     CommandParameter="{Binding ElementName=window}"
                     IsEnabled="{Binding LoginVm.LoginDostepny, Mode=OneWay}"
