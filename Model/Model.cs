@@ -13,6 +13,9 @@ namespace Salon_samochodowy.Model
         public ObservableCollection<Samochod> Samochody { get; set; } = new ObservableCollection<Samochod>();
         public ObservableCollection<Sprzedaz> Sprzedaze { get; set; } = new ObservableCollection<Sprzedaz>();
 
+        public Pracownik Zalogowany = null;
+
+
         public Model()
         {
             //pobranie danych do kolekcjii

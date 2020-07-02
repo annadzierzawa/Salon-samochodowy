@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Salon_samochodowy.View;
 
 namespace Salon_samochodowy.ViewModel
 {
@@ -87,7 +88,9 @@ namespace Salon_samochodowy.ViewModel
                                 var pracownik = model.ZnajdzPracownikaPoLoginie(Login);
                                 if (Password == pracownik.Password)
                                 {
+                                    model.Zalogowany = pracownik;
                                     System.Windows.MessageBox.Show("Zalogowano pomyslnie");
+                                    
                                 }
                             }
                         },
