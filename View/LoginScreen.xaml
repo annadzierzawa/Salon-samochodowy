@@ -3,18 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Salon_samochodowy.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:vm="clr-namespace:Salon_samochodowy.ViewModel"
         mc:Ignorable="d"
         Title="LoginScreen" Height="400" Width="400" Background="#FFACACAC"   >
-    <Border Background="#FF31577E" CornerRadius="10"  Margin="10">
+
+    <Window.Resources>
+        <vm:ViewModel x:Key="mainVM"/>
+    </Window.Resources>
+
+    <Border Background="#FF31577E" CornerRadius="10"  Margin="10" DataContext="{StaticResource mainVM}">
         <StackPanel Margin="20"  Background="#FF5C99D6" >
-             <Label Content="Login" Foreground="White"  FontSize="25" HorizontalAlignment="Center"/>
+            <Label Content="Login" Foreground="White"  FontSize="25" HorizontalAlignment="Center"/>
             <Separator Background="#FF31577E" Height="40"></Separator>
             <Label Content="Username" Foreground="White"/>
-            <TextBox Name="txtUserName" Background="#FFACACAC" Foreground="White" FontSize="15" Margin="10"/>
+            <TextBox Name="txtUserName" Background="#FFACACAC" Foreground="White" FontSize="15" Margin="10" Text="{Binding LoginVm.Login}"/>
             <Label Content="Password" Foreground="White"/>
-            <PasswordBox Name="txtPassword" Background="#FFACACAC" Foreground="White" FontSize="15"  Margin="10"/>
-            <Button Name="buttonSubmit" Content="Submit" Margin="60 10" Background="#FF31577E" Foreground="White" FontSize="15"/>
+            <TextBox Name="txtPassword" Background="#FFACACAC" Foreground="White" FontSize="15"  Margin="10" Text="{Binding LoginVm.Password}"/>
+            <Button Name="buttonSubmit" Content="Submit" Margin="60 10" 
+                    Background="#FF31577E" Foreground="White" FontSize="15"
+                    Command="{Binding LoginVm.Loguj}"
+                    IsEnabled="{Binding LoginVm.LoginDostepny, Mode=OneWay}"
+                    />
         </StackPanel>
     </Border>
 </Window>

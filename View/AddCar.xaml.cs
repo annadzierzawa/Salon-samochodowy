@@ -18,9 +18,9 @@ namespace Salon_samochodowy.View
     /// <summary>
     /// Logika interakcji dla klasy Create.xaml
     /// </summary>
-    public partial class Create : UserControl
+    public partial class AddCar : UserControl
     {
-        public Create()
+        public AddCar()
         {
             InitializeComponent();
         }

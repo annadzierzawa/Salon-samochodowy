@@ -1,16 +1,20 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using Salon_samochodowy.DAL.Encje;
-using Salon_samochodowy.DAL.Repozytoria;
+﻿using System.Linq;
 
 namespace Salon_samochodowy.Model
 {
+    using DAL.Encje;
+    using DAL.Repozytoria;
+    using System.Collections.ObjectModel;
+
     public class Model
     {
         //bazy danych
         public ObservableCollection<Pracownik> Pracownicy { get; set; } = new ObservableCollection<Pracownik>();
         public ObservableCollection<Samochod> Samochody { get; set; } = new ObservableCollection<Samochod>();
         public ObservableCollection<Sprzedaz> Sprzedaze { get; set; } = new ObservableCollection<Sprzedaz>();
+
+        public Pracownik Zalogowany = null;
+
 
         public Model()
         {
@@ -36,6 +40,11 @@ namespace Salon_samochodowy.Model
         private Pracownik ZnajdzPracownikaPoID(sbyte id)
         {
             return Pracownicy.FirstOrDefault(p => p.Id == id);
+        }
+
+        public Pracownik ZnajdzPracownikaPoLoginie(string login)
+        {
+            return Pracownicy.FirstOrDefault(p => p.Login == login);
         }
 
         private Samochod ZnajdzSamochodPoID(sbyte id)
