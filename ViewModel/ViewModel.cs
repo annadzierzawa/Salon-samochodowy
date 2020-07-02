@@ -15,6 +15,8 @@ namespace Salon_samochodowy.ViewModel
 
     class ViewModel
     {
+        UserContext userContext;
+
         private static Model model = new Model();
 
         public AddEmployeeVM AddEmployeeVm { get; set; }
@@ -23,6 +25,7 @@ namespace Salon_samochodowy.ViewModel
 
         public ViewModel()
         {
+            userContext = UserContext.Instance;
             AddEmployeeVm = new AddEmployeeVM(model);
             AddCarVm = new AddCarVM(model);
             LoginVm = new LoginVM(model);

@@ -6,6 +6,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:vm="clr-namespace:Salon_samochodowy.ViewModel"
         mc:Ignorable="d"
+        x:Name="window"
         Title="LoginScreen" Height="400" Width="400" Background="#FFACACAC"   >
 
     <Window.Resources>
@@ -23,6 +24,7 @@
             <Button Name="buttonSubmit" Content="Submit" Margin="60 10" 
                     Background="#FF31577E" Foreground="White" FontSize="15"
                     Command="{Binding LoginVm.Loguj}"
+                    CommandParameter="{Binding ElementName=window}"
                     IsEnabled="{Binding LoginVm.LoginDostepny, Mode=OneWay}"
                     />
         </StackPanel>

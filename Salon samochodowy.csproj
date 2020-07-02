@@ -117,6 +117,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserContext\UserContext.cs" />
     <Compile Include="ViewModel\AddCarVM.cs" />
     <Compile Include="ViewModel\AddEmployeeVM.cs" />
     <Compile Include="ViewModel\BaseClass\RelayCommand.cs" />
