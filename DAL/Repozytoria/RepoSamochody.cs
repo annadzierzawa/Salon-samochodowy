@@ -8,7 +8,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
     {
         #region SQL_QUERIES
         private const string WSZYSTKIE_SAMOCHODY = "SELECT * FROM Samochody";
-        private const string DODAJ_SAMOCHOD = "INSERT INTO `Samochody`(`nazwa`, `silnik`, `kolor`, `krajProdukcji`,`dataProdukcji`, `cenaModelu`) VALUES ";
+        private const string DODAJ_SAMOCHOD = "INSERT INTO `Samochody`(`marka`, `modelPojazdu`, `silnik`, `moc`, `kolor`, `krajProdukcji`,`dataProdukcji`, `cenaModelu`) VALUES ";
         private const string USUN_SAMOCHOD = "DELETE FROM `Samochody` WHERE idModelu=";
         private const string USUN_SPRZEDAZE_SAMOCHODU = "DELETE FROM `Sprzedaz` WHERE idModelu=";
         #endregion
