@@ -25,7 +25,7 @@ namespace Salon_samochodowy.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("173.212.197.48")]
         public string host {
             get {
                 return ((string)(this["host"]));
@@ -34,7 +34,7 @@ namespace Salon_samochodowy.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SalonSamochodowy")]
         public string database {
             get {
                 return ((string)(this["database"]));
@@ -43,7 +43,7 @@ namespace Salon_samochodowy.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("projektPOIG")]
         public string user {
             get {
                 return ((string)(this["user"]));
@@ -52,7 +52,7 @@ namespace Salon_samochodowy.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("projektPOIG")]
         public string password {
             get {
                 return ((string)(this["password"]));
@@ -61,6 +61,7 @@ namespace Salon_samochodowy.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3306")]
         public uint port {
             get {
                 return ((uint)(this["port"]));

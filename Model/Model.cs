@@ -1,10 +1,11 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using Salon_samochodowy.DAL.Encje;
-using Salon_samochodowy.DAL.Repozytoria;
+﻿using System.Linq;
 
 namespace Salon_samochodowy.Model
 {
+    using DAL.Encje;
+    using DAL.Repozytoria;
+    using System.Collections.ObjectModel;
+
     public class Model
     {
         //bazy danych
@@ -36,6 +37,11 @@ namespace Salon_samochodowy.Model
         private Pracownik ZnajdzPracownikaPoID(sbyte id)
         {
             return Pracownicy.FirstOrDefault(p => p.Id == id);
+        }
+
+        public Pracownik ZnajdzPracownikaPoLoginie(string login)
+        {
+            return Pracownicy.FirstOrDefault(p => p.Login == login);
         }
 
         private Samochod ZnajdzSamochodPoID(sbyte id)

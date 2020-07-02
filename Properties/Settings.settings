@@ -1,23 +1,23 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="MYSQL">
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
   <Profiles>
     <Profile Name="MYSQL" />
   </Profiles>
   <Settings>
     <Setting Name="host" Type="System.String" Scope="Application">
-      <Value Profile="MYSQL">173.212.197.48</Value>
+      <Value Profile="(Default)">173.212.197.48</Value>
     </Setting>
     <Setting Name="database" Type="System.String" Scope="Application">
-      <Value Profile="MYSQL">SalonSamochodowy</Value>
+      <Value Profile="(Default)">SalonSamochodowy</Value>
     </Setting>
     <Setting Name="user" Type="System.String" Scope="Application">
-      <Value Profile="MYSQL">projektPOIG</Value>
+      <Value Profile="(Default)">projektPOIG</Value>
     </Setting>
     <Setting Name="password" Type="System.String" Scope="Application">
-      <Value Profile="MYSQL">projektPOIG</Value>
+      <Value Profile="(Default)">projektPOIG</Value>
     </Setting>
     <Setting Name="port" Type="System.UInt32" Scope="Application">
-      <Value Profile="MYSQL">3306</Value>
+      <Value Profile="(Default)">3306</Value>
     </Setting>
   </Settings>
 </SettingsFile>

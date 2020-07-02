@@ -117,8 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\AddEmployeeVM.cs" />
     <Compile Include="ViewModel\BaseClass\RelayCommand.cs" />
     <Compile Include="ViewModel\BaseClass\ViewModelBase.cs" />
+    <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="View\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -134,8 +136,8 @@
     <Compile Include="View\ChangePassword.xaml.cs">
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Create.xaml.cs">
-      <DependentUpon>Create.xaml</DependentUpon>
+    <Compile Include="View\AddCar.xaml.cs">
+      <DependentUpon>AddCar.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SellersStats.xaml.cs">
       <DependentUpon>SellersStats.xaml</DependentUpon>
@@ -163,7 +165,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Create.xaml">
+    <Page Include="View\AddCar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
