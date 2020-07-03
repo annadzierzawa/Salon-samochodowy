@@ -125,6 +125,7 @@
     <Compile Include="ViewModel\BaseClass\ViewModelBase.cs" />
     <Compile Include="ViewModel\ChangePasswordVM.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
+    <Compile Include="ViewModel\SellersStatsVM.cs" />
     <Compile Include="ViewModel\SellingVM.cs" />
     <Compile Include="View\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
