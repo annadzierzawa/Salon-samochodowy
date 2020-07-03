@@ -47,5 +47,11 @@ namespace Salon_samochodowy
         {
             DataContext = new SellingVM();
         }
+
+        private void Changepassword_OnClick(object sender, RoutedEventArgs e)
+        {
+            ChangePassword cp = new ChangePassword();
+            cp.Show();
+        }
     }
 }
