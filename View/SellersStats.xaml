@@ -4,38 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Salon_samochodowy.View"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:viewModel="clr-namespace:Salon_samochodowy.ViewModel"
              mc:Ignorable="d" 
             d:DesignHeight="540" d:DesignWidth="1010" Background="#FFACACAC">
-    <Border Background="#FF5C99D6" CornerRadius="25"  Margin="10">
+
+    <UserControl.Resources>
+        <viewModel:ViewModel x:Key="mainVM"/>
+    </UserControl.Resources>
+
+    <Border Background="#FF5C99D6" CornerRadius="25"  Margin="10" DataContext="{StaticResource mainVM}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" >
-                <Label Content="Wybór pracownika" Margin="10" FontSize="15" Foreground="White"/>
-                <ComboBox Margin="5" Background="#FFACACAC" Foreground="White" BorderBrush="Beige"/>
+                <Label Content="Pracownik" Margin="10" FontSize="15" Foreground="White"/>
+                <TextBox Margin="5" Background="#FFACACAC" Foreground="White" BorderBrush="Beige" Text="{Binding SellersStatsVm.Pracownik}"/>
                 <Label Content="Sprzedane pojazdy" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding SellersStatsVm.SprzedanePojazdy}"/>
                 <Label Content="Łączna wartość sprzedanych pojazdów" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding SellersStatsVm.CenaSprzedanychPojazdow}"/>
                 <Label Content="Premia uzyskana z tytułu sprzedaży" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding SellersStatsVm.PremiaZeSprzedazy}"/>
                 <Label Content="Data ostatniej sprzedaży" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="XX-XX-XXXX"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" >
-                <Label Content="Wybór pracownika" Margin="10" FontSize="15" Foreground="White"/>
-                <ComboBox Margin="5" Background="#FFACACAC" Foreground="White" BorderBrush="Beige"/>
-                <Label Content="Sprzedane pojazdy" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
-                <Label Content="Łączna wartość sprzedanych pojazdów" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
-                <Label Content="Premia uzyskana z tytułu sprzedaży" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
-                <Label Content="Data ostatniej sprzedaży" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <ListView x:Name="znajomi" Margin="25" Height="470" 
+                          ItemsSource="{Binding SellersStatsVm.PracownicyLista}"
+                          SelectedIndex="{Binding SellersStatsVm.ZaznaczonyPracownik, Mode=TwoWay}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SellersStatsVm.ZaladujInformacje}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListView>
             </StackPanel>
 
         </Grid>

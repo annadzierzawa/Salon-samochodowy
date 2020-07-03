@@ -23,6 +23,7 @@ namespace Salon_samochodowy.ViewModel
         public LoginVM LoginVm { get; set; }
         public AddCarVM AddCarVm { get; set; }
         public ChangePasswordVM ChangePasswordVm { get; set; }
+        public SellersStatsVM SellersStatsVm { get; set; }
 
         public ViewModel()
         {
@@ -31,6 +32,7 @@ namespace Salon_samochodowy.ViewModel
             AddCarVm = new AddCarVM(model);
             LoginVm = new LoginVM(model);
             ChangePasswordVm = new ChangePasswordVM(model);
+            SellersStatsVm = new SellersStatsVM(model);
         }
 
     }

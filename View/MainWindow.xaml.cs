@@ -53,5 +53,11 @@ namespace Salon_samochodowy
             ChangePassword cp = new ChangePassword();
             cp.Show();
         }
+
+        private void SellersStats_OnClick(object sender, RoutedEventArgs e)
+        {
+            Model.Model model = new Model.Model();
+            DataContext = new SellersStatsVM(model);
+        }
     }
 }
