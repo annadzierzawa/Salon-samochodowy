@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:Salon_samochodowy.ViewModel"
         mc:Ignorable="d"
         x:Name="window"
-        Title="LoginScreen" Height="400" Width="400" Background="#FFACACAC"   >
+        Title="LoginScreen" Height="400" Width="400" Background="#FFACACAC" ResizeMode="NoResize">
 
     <Window.Resources>
         <vm:ViewModel x:Key="mainVM"/>

@@ -10,8 +10,10 @@ namespace Salon_samochodowy.ViewModel
     using DAL.Encje;
     using Model;
     using Salon_samochodowy.DAL.Repozytoria;
+    using Salon_samochodowy.View;
     using System.Collections.ObjectModel;
     using System.Data.SqlTypes;
+    using System.Windows;
     using System.Windows.Input;
 
     class AddCarVM : ViewModelBase
@@ -22,6 +24,8 @@ namespace Salon_samochodowy.ViewModel
         private string marka, modelPojazdu, krajProdukcji, kolor, silnik, rokProdukcji;
         private double cena;
         private int moc;
+        private int zaznaczonySamochod;
+        public List<string> samochodyLista = new List<string>();
 
         #endregion
 
@@ -31,6 +35,10 @@ namespace Salon_samochodowy.ViewModel
         {
             this.model = model;
             Samochody = model.Samochody;
+            foreach (var samochod in Samochody)
+            {
+                samochodyLista.Add($"{samochod.Marka} {samochod.ModelPojazdu}");
+            }
         }
 
         #endregion
@@ -50,6 +58,16 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
+        public int ZaznaczonySamochod
+        {
+            get => zaznaczonySamochod;
+            set
+            {
+                zaznaczonySamochod = value;
+                onPropertyChanged(nameof(ZaznaczonySamochod));
+            }
+        }
+
         public string ModelPojazdu
         {
             get => modelPojazdu;
@@ -63,7 +81,7 @@ namespace Salon_samochodowy.ViewModel
         public string KrajProdukcji
         {
             get => krajProdukcji;
-            set 
+            set
             {
                 krajProdukcji = value;
                 onPropertyChanged(nameof(KrajProdukcji));
@@ -120,6 +138,16 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
+        public List<string> SamochodyLista
+        {
+            get => samochodyLista;
+            set
+            {
+                samochodyLista = value;
+                onPropertyChanged(nameof(SamochodyLista));
+            }
+        }
+
         #endregion
 
         private void ClearAll()
@@ -132,6 +160,18 @@ namespace Salon_samochodowy.ViewModel
             Cena = 0;
             Moc = 0;
             RokProdukcji = "";
+        }
+
+        private void LadujInformacje(int IdSamochodu)
+        {
+            Marka = Samochody[IdSamochodu].Marka;
+            ModelPojazdu = Samochody[IdSamochodu].ModelPojazdu;
+            KrajProdukcji = Samochody[IdSamochodu].KrajProdukcji;
+            Kolor = Samochody[IdSamochodu].Kolor;
+            Silnik = Samochody[IdSamochodu].Silnik;
+            Cena = Samochody[IdSamochodu].Cena;
+            Moc = Samochody[IdSamochodu].Moc;
+            RokProdukcji = Samochody[IdSamochodu].DataProdukcji;
         }
 
         #region Komendy
@@ -150,11 +190,64 @@ namespace Salon_samochodowy.ViewModel
                         if (!model.DodajSamochod(samochod))
                             return;
                         ClearAll();
+                        onPropertyChanged(nameof(marka));
+                        onPropertyChanged(nameof(modelPojazdu));
+                        onPropertyChanged(nameof(cena));
+                        onPropertyChanged(nameof(moc));
+                        onPropertyChanged(nameof(kolor));
+                        onPropertyChanged(nameof(rokProdukcji));
+                        onPropertyChanged(nameof(krajProdukcji));
+                        onPropertyChanged(nameof(silnik));
                         System.Windows.MessageBox.Show($"{Marka} {ModelPojazdu} został dodany do bazy!");
                     },
                     arg => (Marka != "") && (ModelPojazdu != "") && (Silnik != "") && (Kolor != "") && (KrajProdukcji != "") && (RokProdukcji != "") && (Cena > 0) && (Moc > 0)
                     );
                 return dodajSamochod;
+            }
+        }
+
+        private ICommand zaladujInformacje = null;
+        public ICommand ZaladujInformacje
+        {
+            get
+            {
+                if (zaladujInformacje == null)
+                    zaladujInformacje = new RelayCommand(
+                        arg =>
+                        {
+
+                            if (ZaznaczonySamochod != -1)
+                            {
+                                LadujInformacje(ZaznaczonySamochod);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Złe dane!");
+                                ClearAll();
+                            }
+                        },
+                        arg => true
+                    );
+
+                return zaladujInformacje;
+            }
+        }
+
+        private ICommand opisPojazdu = null;
+        public ICommand OpisPojazdu
+        {
+            get
+            {
+                if (opisPojazdu == null)
+                    opisPojazdu = new RelayCommand(
+                        arg =>
+                        {
+                            AboutCar aboutCar = new AboutCar();
+                            aboutCar.Show();
+                        },
+                        arg => true
+                        );
+                return opisPojazdu;
             }
         }
 

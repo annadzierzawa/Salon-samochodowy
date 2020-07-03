@@ -25,6 +25,8 @@ namespace Salon_samochodowy
         public MainWindow()
         {
             InitializeComponent();
+            Model.Model model = new Model.Model();
+            DataContext = new SellingVM(model);
         }
 
         private void ItemCreate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -45,7 +47,8 @@ namespace Salon_samochodowy
 
         private void ItemHome_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            DataContext = new SellingVM();
+            Model.Model model = new Model.Model();
+            DataContext = new SellingVM(model);
         }
 
         private void Changepassword_OnClick(object sender, RoutedEventArgs e)

@@ -13,8 +13,8 @@
         <viewModel:ViewModel x:Key="mainVM"/>
     </UserControl.Resources>
 
-    <Border Background="#FF5C99D6" CornerRadius="25"  Margin="10" DataContext="{StaticResource mainVM}">
-        <Grid>
+    <Border Background="#FF31577E" CornerRadius="25"  Margin="10" DataContext="{StaticResource mainVM}">
+        <Grid Margin="25" Background="#FF5C99D6" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

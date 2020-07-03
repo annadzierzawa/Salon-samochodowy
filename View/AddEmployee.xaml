@@ -4,23 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Salon_samochodowy.View"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:viewModel="clr-namespace:Salon_samochodowy.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="1010" Background="#FFACACAC">
-    <Border Background="#FF5C99D6" CornerRadius="25"  Margin="10">
-        <Grid>
+    
+    <UserControl.Resources>
+        <viewModel:ViewModel x:Key="mainVM"/>
+    </UserControl.Resources>
+
+    <Border Background="#FF31577E" CornerRadius="25"  Margin="10" DataContext="{StaticResource mainVM}">
+        <Grid Margin="25" Background="#FF5C99D6" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" >
                 <Label Content="Imie:" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddEmployeeVm.Imie, Mode=TwoWay}"/>
                 <Label Content="Nazwisko:" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddEmployeeVm.Nazwisko, Mode=TwoWay}"/>
                 <Label Content="Login" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddEmployeeVm.Login, Mode=TwoWay}"/>
                 <Label Content="Hasło:" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddEmployeeVm.Password, Mode=TwoWay}"/>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -28,13 +35,23 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="button_Dodaj" Grid.Column="0" Content="Dodaj" Margin="10" Background="#FF31577E" BorderBrush="Beige"/>
+                    <Button x:Name="button_Dodaj" Grid.Column="0" Content="Dodaj" Margin="10" Background="#FF31577E" BorderBrush="Beige" Command="{Binding AddEmployeeVm.Dodaj}"/>
                     <Button x:Name="button_Edytuj" Grid.Column="1" Content="Edytuj" Margin="10" Background="#FF31577E" BorderBrush="Beige"/>
                     <Button x:Name="button_Usun" Grid.Column="2" Content="Usuń" Margin="10" Background="#FF31577E" BorderBrush="Beige"/>
                 </Grid>
             </StackPanel>
 
-            <ListBox  Grid.Row="0" Grid.Column="1" Margin="10" FontSize="20" Grid.ColumnSpan="2"/>
+            <StackPanel Grid.Column="1" >
+                <ListView x:Name="znajomi" Margin="25" Height="470" 
+                          ItemsSource="{Binding AddEmployeeVm.PracownicyLista}"
+                          SelectedIndex="{Binding SellersStatsVm.ZaznaczonyPracownik, Mode=TwoWay}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SellersStatsVm.ZaladujInformacje}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListView>
+            </StackPanel>
         </Grid>
     </Border>
 </UserControl>
