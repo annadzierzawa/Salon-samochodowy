@@ -34,7 +34,7 @@ namespace Salon_samochodowy.ViewModel
 
         public string Login
         {
-            get { return login; }
+            get => login;
             set
             {
                 login = value;
@@ -44,7 +44,7 @@ namespace Salon_samochodowy.ViewModel
 
         public string Password
         {
-            get { return password; }
+            get => password;
             set
             {
                 password = value;
@@ -53,7 +53,7 @@ namespace Salon_samochodowy.ViewModel
         }
         public bool LoginDostepny
         {
-            get { return loginDostepny; }
+            get => loginDostepny;
             set
             {
                 loginDostepny = value;
@@ -68,7 +68,7 @@ namespace Salon_samochodowy.ViewModel
         {
             Login = "";
             Password = "";
-            LoginDostepny = false;
+            LoginDostepny = true;
         }
 
 

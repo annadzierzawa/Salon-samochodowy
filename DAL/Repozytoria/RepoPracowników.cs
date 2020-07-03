@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using MySql.Data.MySqlClient;
 
 namespace Salon_samochodowy.DAL.Repozytoria
@@ -53,11 +54,12 @@ namespace Salon_samochodowy.DAL.Repozytoria
             bool stan = false;
             using (var connection = DBConnection.Instance.Connection)
             {
-                string EDYTUJ_PRACOWNIKA = $"UPDATE osoby SET login=`{pracownik.Login}`, password=`{pracownik.Password}`, " +
-                                      $"imie=`{pracownik.Imie}`, nazwisko=`{pracownik.Nazwisko}`,"+
-                                      $"premia=`{pracownik.Premia}` WHERE idPracownika={idPracownika}";
+                string EDYTUJ_PRACOWNIKA = $"UPDATE Pracownicy SET login='{pracownik.Login}', password='{pracownik.Password}', " +
+                                      $"imie='{pracownik.Imie}', nazwisko='{pracownik.Nazwisko}',"+
+                                      $"premia='{pracownik.Premia}' WHERE idPracownika={idPracownika};";
 
                 MySqlCommand command = new MySqlCommand(EDYTUJ_PRACOWNIKA, connection);
+                MessageBox.Show(EDYTUJ_PRACOWNIKA);
                 connection.Open();
                 var n = command.ExecuteNonQuery();
                 if (n == 1) stan = true;

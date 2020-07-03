@@ -20,6 +20,9 @@
         <DataTemplate x:Name="sellingTemplate" DataType="{x:Type vms:SellingVM}">
             <views:UserControl1 DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="changePasswordTemplate" DataType="{x:Type vms:ChangePasswordVM}">
+            <views:ChangePassword DataContext="{Binding}"/>
+        </DataTemplate>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
@@ -52,8 +55,8 @@
                 <TextBlock Text="Dealer" VerticalAlignment="Center" FontSize="16"/>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
-                        <Button Content="Settings"/>
-                        <Button Content="Account"/>
+                        <Button Content="Change password" Click="Changepassword_OnClick"/>
+                        <Button Content="Selling statistics"/>
                         <Button Content="Help"/>
 
                         <Separator/>

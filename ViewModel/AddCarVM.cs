@@ -25,7 +25,7 @@ namespace Salon_samochodowy.ViewModel
 
         #endregion
 
-        #region Konstruktors
+        #region Konstruktory
 
         public AddCarVM(Model model)
         {
