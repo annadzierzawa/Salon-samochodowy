@@ -125,7 +125,6 @@ namespace Salon_samochodowy.ViewModel
             
             foreach (var s in Sprzedaze)
             {
-                MessageBox.Show(IdPracownika + " " + s.IdPracownika);
                 if (IdPracownika + 1 == s.IdPracownika)
                 {
                     cenaSuma += s.Cena;
