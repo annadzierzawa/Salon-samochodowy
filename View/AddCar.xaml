@@ -56,6 +56,11 @@
                 <ListView x:Name="znajomi" Margin="25" Height="470" 
                           ItemsSource="{Binding AddCarVm.SamochodyLista, UpdateSourceTrigger=PropertyChanged}"
                           SelectedIndex="{Binding AddCarVm.ZaznaczonySamochod, Mode=TwoWay}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding AddCarVm.ZaladujInformacje}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </ListView>
             </StackPanel>
         </Grid>
