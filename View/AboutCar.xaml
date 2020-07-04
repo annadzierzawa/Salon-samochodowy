@@ -4,33 +4,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon_samochodowy.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:viewModel="clr-namespace:Salon_samochodowy.ViewModel"
         mc:Ignorable="d"
-        Title="LoginScreen" Height="400" Width="720" Background="#FFACACAC"   >
-    <Border Background="#FF31577E" CornerRadius="10"  Margin="5">
+        Title="Car Informations" Height="400" Width="720" Background="#FFACACAC" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <viewModel:ViewModel x:Key="mainVM"/>
+    </Window.Resources>
+
+    <Border Background="#FF31577E" CornerRadius="10"  Margin="5" DataContext="{StaticResource mainVM}">
         <Grid>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding AddCarVm.ZaladujInformacje}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Margin="10,10,0,10"  Background="#FF5C99D6" Grid.Column="0">
             <Label Content="Marka:" Margin="5" FontSize="15" Foreground="White"/>
-            <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+            <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding AddCarVm.Marka}"/>
             <Label Content="Silnik:" Margin="5" FontSize="15" Foreground="White"/>
-            <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding AddCarVm.Silnik}"/>
             <Label Content="Kraj produkcji:" Margin="5" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding AddCarVm.KrajProdukcji}"/>
             <Label Content="Kolor:" Margin="5" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding AddCarVm.Kolor}"/>
             </StackPanel>
             <StackPanel Margin="0,10,10,10"  Background="#FF5C99D6" Grid.Column="1">
                 <Label Content="Model:" Margin="5" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding AddCarVm.ModelPojazdu}"/>
                 <Label Content="Moc:" Margin="5" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding AddCarVm.Moc}"/>
                 <Label Content="Data produkcji:" Margin="5" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding AddCarVm.RokProdukcji}"/>
                 <Label Content="Cena:" Margin="5" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding AddCarVm.Cena}"/>
             </StackPanel>
         </Grid>
     </Border>

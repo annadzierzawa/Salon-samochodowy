@@ -117,10 +117,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserContext\UserContext.cs" />
+    <Compile Include="ViewModel\AboutVM.cs" />
+    <Compile Include="ViewModel\AddCarVM.cs" />
     <Compile Include="ViewModel\AddEmployeeVM.cs" />
     <Compile Include="ViewModel\BaseClass\RelayCommand.cs" />
     <Compile Include="ViewModel\BaseClass\ViewModelBase.cs" />
+    <Compile Include="ViewModel\ChangePasswordVM.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
+    <Compile Include="ViewModel\SellersStatsVM.cs" />
+    <Compile Include="ViewModel\SellingVM.cs" />
     <Compile Include="View\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>

@@ -11,6 +11,7 @@ namespace Salon_samochodowy.ViewModel
     using Model;
     using DAL.Encje;
     using System.Collections.ObjectModel;
+    using System.Windows;
 
     class AddEmployeeVM : ViewModelBase
     {
@@ -20,6 +21,8 @@ namespace Salon_samochodowy.ViewModel
         private string imie, nazwisko, login, password;
         private bool dodawanieDostepne = true;
         private bool edycjaDostepna = false;
+        private int zaznaczonyPracownik;
+        public List<string> pracownicyLista = new List<string>();
 
         #endregion
 
@@ -29,6 +32,10 @@ namespace Salon_samochodowy.ViewModel
         {
             this.model = model;
             Pracownicy = model.Pracownicy;
+            foreach (var prac in Pracownicy)
+            {
+                pracownicyLista.Add($"{prac.Imie} {prac.Nazwisko}");
+            }
         }
 
         #endregion
@@ -46,6 +53,16 @@ namespace Salon_samochodowy.ViewModel
             {
                 imie = value;
                 onPropertyChanged(nameof(Imie));
+            }
+        }
+
+        public int ZaznaczonyPracownik
+        {
+            get => zaznaczonyPracownik;
+            set
+            {
+                zaznaczonyPracownik = value;
+                onPropertyChanged(nameof(ZaznaczonyPracownik));
             }
         }
 
@@ -99,6 +116,16 @@ namespace Salon_samochodowy.ViewModel
                 onPropertyChanged(nameof(EdycjaDostepna));
             }
         }
+
+        public List<string> PracownicyLista
+        {
+            get => pracownicyLista;
+            set
+            {
+                pracownicyLista = value;
+                onPropertyChanged(nameof(PracownicyLista));
+            }
+        }
         #endregion
 
 
@@ -112,6 +139,13 @@ namespace Salon_samochodowy.ViewModel
             EdycjaDostepna = false;
         }
 
+        private void LadujInformacje(int IdPracownika)
+        {
+            Imie = Pracownicy[IdPracownika].Imie;
+            Nazwisko = Pracownicy[IdPracownika].Nazwisko;
+            Login = Pracownicy[IdPracownika].Login ;
+            Password = Pracownicy[IdPracownika].Password;
+        }
 
         #region Komendy
 
@@ -127,8 +161,13 @@ namespace Salon_samochodowy.ViewModel
                         var pracownik = new Pracownik(Login, Password, Imie, Nazwisko, 0);
                         if (!model.DodajPracownika(pracownik)) return;
                         ClearAll();
+                        onPropertyChanged(nameof(imie));
+                        onPropertyChanged(nameof(nazwisko));
+                        onPropertyChanged(nameof(login));
+                        onPropertyChanged(nameof(password));
                         System.Windows.MessageBox.Show($"Pracownik została dodana do bazy! \n " +
                                                        $"{Imie} {Nazwisko} | {Login} {Password}");
+                        
                     },
                     arg => (Imie != "") && (Nazwisko != "") && (Login != "") && (Password != "")
                 );
@@ -137,6 +176,32 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
+        private ICommand zaladujInformacje = null;
+        public ICommand ZaladujInformacje
+        {
+            get
+            {
+                if (zaladujInformacje == null)
+                    zaladujInformacje = new RelayCommand(
+                        arg =>
+                        {
+
+                            if (ZaznaczonyPracownik != -1)
+                            {
+                                LadujInformacje(ZaznaczonyPracownik);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Złe dane!");
+                                ClearAll();
+                            }
+                        },
+                        arg => true
+                    );
+
+                return zaladujInformacje;
+            }
+        }
 
         #endregion
 

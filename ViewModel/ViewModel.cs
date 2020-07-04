@@ -15,15 +15,24 @@ namespace Salon_samochodowy.ViewModel
 
     class ViewModel
     {
+        UserContext userContext;
+
         private static Model model = new Model();
 
         public AddEmployeeVM AddEmployeeVm { get; set; }
         public LoginVM LoginVm { get; set; }
+        public AddCarVM AddCarVm { get; set; }
+        public ChangePasswordVM ChangePasswordVm { get; set; }
+        public SellersStatsVM SellersStatsVm { get; set; }
 
         public ViewModel()
         {
+            userContext = UserContext.Instance;
             AddEmployeeVm = new AddEmployeeVM(model);
+            AddCarVm = new AddCarVM(model);
             LoginVm = new LoginVM(model);
+            ChangePasswordVm = new ChangePasswordVM(model);
+            SellersStatsVm = new SellersStatsVM(model);
         }
 
     }

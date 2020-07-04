@@ -4,11 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon_samochodowy"
+        xmlns:views="clr-namespace:Salon_samochodowy.View"
+        xmlns:vms="clr-namespace:Salon_samochodowy.ViewModel"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" Height="600" Width="1080" Foreground="White" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
         Title="MainWindow">
      
     <Window.Resources>
+        <DataTemplate x:Name="addCarTemplate" DataType="{x:Type vms:AddCarVM}">
+            <views:AddCar DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="aboutTemplate" DataType="{x:Type vms:AboutVM}">
+            <views:About DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="sellingTemplate" DataType="{x:Type vms:SellingVM}">
+            <views:UserControl1 DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="sellStatsTemplate" DataType="{x:Type vms:SellersStatsVM}">
+            <views:SellersStats DataContext="{Binding}"/>
+        </DataTemplate>
+
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
@@ -31,6 +46,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid Background="#FFDEDEDE">
+        <ContentControl Content="{Binding}" Margin="70,60,0,0"/>
         <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1010"/>
         <Grid Height="60" VerticalAlignment="Top" Background="#FF5C99D6">
             <Grid.Effect>
@@ -40,8 +56,8 @@
                 <TextBlock Text="Dealer" VerticalAlignment="Center" FontSize="16"/>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
-                        <Button Content="Settings"/>
-                        <Button Content="Account"/>
+                        <Button Content="Change password" Click="Changepassword_OnClick"/>
+                        <Button Content="Selling statistics"  Click="SellersStats_OnClick"/>
                         <Button Content="Help"/>
 
                         <Separator/>
@@ -75,25 +91,25 @@
                     <Image Height="80" VerticalAlignment="Bottom"/>
                 </Grid>
                 <ListView x:Name="ListViewMenu" Foreground="#FF5C99D6" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <ListViewItem x:Name="ItemHome" Height="60">
+                    <ListViewItem x:Name="ItemHome" Height="60" MouseDoubleClick="ItemHome_MouseDoubleClick">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Dollar" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Selling" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="ItemCreate" Height="60">
+                    <ListViewItem x:Name="ItemCreate" Height="60" MouseDoubleClick="ItemCreate_MouseDoubleClick">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Pencil" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Create" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" MouseDoubleClick="About_MouseDoubleClick">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="PeopleGroup" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Authors Information" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" MouseDoubleClick="Exit_MouseDoubleClick">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ExitToApp" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Exit" VerticalAlignment="Center"  Margin="20 10"/>

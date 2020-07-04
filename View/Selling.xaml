@@ -3,20 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:viewModel="clr-namespace:Salon_samochodowy.ViewModel"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Salon_samochodowy.View"
              mc:Ignorable="d" 
-             d:DesignHeight="540" d:DesignWidth="1010" Background="#FFACACAC">
-    <Border Background="#FF31577E" CornerRadius="25"  Margin="10">
+             d:DesignHeight="540" d:DesignWidth="1010" Background="#FFACACAC" >
+    <UserControl.Resources>
+        <viewModel:ViewModel x:Key="mainVM"/>
+    </UserControl.Resources>
+
+    <Border Background="#FF31577E" CornerRadius="25"  Margin="10" DataContext="{StaticResource mainVM}">
         <StackPanel Margin="25" Background="#FF5C99D6" >
-            <ListView Margin="10" Height="350">
+            <ListView x:Name="znajomi" Margin="10" Height="350" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                          ItemsSource="{Binding AddCarVm.SamochodyLista, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedIndex="{Binding AddCarVm.ZaznaczonySamochod, Mode=TwoWay}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding UpdateList}"/>
+                        <i:InvokeCommandAction Command="{Binding AddCarVm.ZaladujInformacje}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ListView>
-            <Button Content="Opis pojazdu" Height="40" Width="350" Margin="5" Background="#FF31577E" BorderBrush="Beige"/>
+            <Button Content="Opis pojazdu" Height="40" Width="350" Margin="5" Background="#FF31577E" BorderBrush="Beige" Command="{Binding AddCarVm.OpisPojazdu}"/>
             <Button Content="Sprzedaj" Height="40" Width="350" Margin="5" Background="#FF31577E" BorderBrush="Beige"/>
         </StackPanel>
     </Border>

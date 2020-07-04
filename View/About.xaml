@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="1010" Background="#FFACACAC">
     <Border Background="#FF31577E" CornerRadius="25"  Margin="10">
-        <StackPanel Margin="25" Background="#FF5C99D6" >
+        <StackPanel Margin="25" Background="#FF5C99D6">
             <Label Content="Autorzy:" Foreground="White"  FontSize="35" HorizontalAlignment="Center" Margin="10"/>
             <Separator Background="#FF31577E" Height="40"/>
             <Label Content="Project Manager: Pawcio Silva" Foreground="White" FontSize="35" HorizontalAlignment="Center"/>

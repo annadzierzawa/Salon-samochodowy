@@ -7,6 +7,7 @@ namespace Salon_samochodowy.ViewModel
     using Model;
     using DAL.Encje;
     using System.Collections.ObjectModel;
+    using System.Windows;
 
     class LoginVM : ViewModelBase
     {
@@ -33,7 +34,7 @@ namespace Salon_samochodowy.ViewModel
 
         public string Login
         {
-            get { return login; }
+            get => login;
             set
             {
                 login = value;
@@ -43,7 +44,7 @@ namespace Salon_samochodowy.ViewModel
 
         public string Password
         {
-            get { return password; }
+            get => password;
             set
             {
                 password = value;
@@ -52,7 +53,7 @@ namespace Salon_samochodowy.ViewModel
         }
         public bool LoginDostepny
         {
-            get { return loginDostepny; }
+            get => loginDostepny;
             set
             {
                 loginDostepny = value;
@@ -67,7 +68,7 @@ namespace Salon_samochodowy.ViewModel
         {
             Login = "";
             Password = "";
-            LoginDostepny = false;
+            LoginDostepny = true;
         }
 
 
@@ -76,22 +77,27 @@ namespace Salon_samochodowy.ViewModel
         private ICommand loguj = null;
         public ICommand Loguj
         {
-            get 
+            get
             {
                 if (loguj == null)
                     loguj = new RelayCommand(
                         arg =>
                         {
-                            System.Windows.MessageBox.Show(" pomyslnie");
-                            if (model.ZnajdzPracownikaPoLoginie(Login) != null)
+                            var userContext = UserContext.Instance;
+                            var pracownik = model.ZnajdzPracownikaPoLoginie(Login);
+                            if (pracownik != null && Password == pracownik.Password)
                             {
-                                var pracownik = model.ZnajdzPracownikaPoLoginie(Login);
-                                if (Password == pracownik.Password)
-                                {
-                                    model.Zalogowany = pracownik;
-                                    System.Windows.MessageBox.Show("Zalogowano pomyslnie");
-                                    
-                                }
+                                model.Zalogowany = pracownik;
+                                userContext.CurrentUser = pracownik;
+                                var mainWindow = new MainWindow();
+                                mainWindow.Show();
+                                var loginWindow = (LoginScreen)arg;
+                                loginWindow.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Złe dane!");
+                                ClearAll();
                             }
                         },
                         arg => (Login != "") && (Password != "")

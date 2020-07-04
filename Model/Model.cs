@@ -13,7 +13,7 @@ namespace Salon_samochodowy.Model
         public ObservableCollection<Samochod> Samochody { get; set; } = new ObservableCollection<Samochod>();
         public ObservableCollection<Sprzedaz> Sprzedaze { get; set; } = new ObservableCollection<Sprzedaz>();
 
-        public Pracownik Zalogowany = null;
+        public Pracownik Zalogowany { get; set; }
 
 
         public Model()
@@ -35,7 +35,10 @@ namespace Salon_samochodowy.Model
             {
                 Sprzedaze.Add(sp);
             }
+
+            Zalogowany = null;
         }
+
 
         private Pracownik ZnajdzPracownikaPoID(sbyte id)
         {
@@ -99,7 +102,6 @@ namespace Salon_samochodowy.Model
 
             return true;
         }
-
 
 
     }
