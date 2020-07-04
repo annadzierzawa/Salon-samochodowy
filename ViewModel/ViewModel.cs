@@ -19,9 +19,10 @@ namespace Salon_samochodowy.ViewModel
 
         private static Model model = new Model();
 
-        public AddEmployeeVM AddEmployeeVm { get; set; }
+       
         public LoginVM LoginVm { get; set; }
         public AddCarVM AddCarVm { get; set; }
+        public AddEmployeeVM AddEmployeeVm { get; set; }
         public ChangePasswordVM ChangePasswordVm { get; set; }
         public SellersStatsVM SellersStatsVm { get; set; }
 

@@ -44,10 +44,10 @@
             <StackPanel Grid.Column="1" >
                 <ListView x:Name="znajomi" Margin="25" Height="470" 
                           ItemsSource="{Binding AddEmployeeVm.PracownicyLista}"
-                          SelectedIndex="{Binding SellersStatsVm.ZaznaczonyPracownik, Mode=TwoWay}">
+                          SelectedIndex="{Binding AddEmployeeVm.ZaznaczonyPracownik, Mode=TwoWay}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding SellersStatsVm.ZaladujInformacje}"/>
+                            <i:InvokeCommandAction Command="{Binding AddEmployeeVm.ZaladujInformacje}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </ListView>

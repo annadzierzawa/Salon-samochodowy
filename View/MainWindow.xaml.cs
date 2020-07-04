@@ -22,16 +22,16 @@ namespace Salon_samochodowy
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Model.Model model;
         public MainWindow()
         {
             InitializeComponent();
-            Model.Model model = new Model.Model();
+            model = new Model.Model();
             DataContext = new SellingVM(model);
         }
 
         private void ItemCreate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Model.Model model = new Model.Model();
             DataContext = new AddCarVM(model);
         }
 
@@ -42,12 +42,11 @@ namespace Salon_samochodowy
 
         private void Exit_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            App.Current.Shutdown();
+            Application.Current.Shutdown();
         }
 
         private void ItemHome_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Model.Model model = new Model.Model();
             DataContext = new SellingVM(model);
         }
 
@@ -59,8 +58,17 @@ namespace Salon_samochodowy
 
         private void SellersStats_OnClick(object sender, RoutedEventArgs e)
         {
-            Model.Model model = new Model.Model();
             DataContext = new SellersStatsVM(model);
+        }
+
+        private void AddEmployee_OnClick(object sender, RoutedEventArgs e)
+        {
+            DataContext = new AddEmployeeVM(model);
+        }
+
+        private void Logout_OnClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
