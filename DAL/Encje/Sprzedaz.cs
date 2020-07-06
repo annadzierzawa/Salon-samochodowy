@@ -5,7 +5,7 @@ namespace Salon_samochodowy.DAL.Encje
     public class Sprzedaz
     {
         #region Pola
-        public sbyte IdSprzedazy { get; set; }
+        public sbyte? IdSprzedazy { get; set; }
         public sbyte IdPracownika { get; set; }
         public sbyte IdSamochodu { get; set; }
         public double Cena { get; set; }
@@ -19,6 +19,14 @@ namespace Salon_samochodowy.DAL.Encje
             IdPracownika = sbyte.Parse(reader["idPracownika"].ToString());
             IdSamochodu = sbyte.Parse(reader["idModelu"].ToString());
             Cena = double.Parse(reader["cena"].ToString());
+        }
+
+        public Sprzedaz(sbyte idPracownika, sbyte idSamochodu, double cena)
+        {
+            IdSprzedazy = null;
+            IdPracownika = idPracownika;
+            IdSamochodu = idSamochodu;
+            Cena = cena;
         }
         #endregion
 

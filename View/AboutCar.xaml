@@ -17,7 +17,7 @@
         <Grid>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding AddCarVm.ZaladujInformacje}"/>
+                    <i:InvokeCommandAction Command="{Binding SellingVM.ZaladujInformacje}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         <Grid.ColumnDefinitions>

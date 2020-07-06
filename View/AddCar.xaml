@@ -53,7 +53,7 @@
 
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.ColumnSpan="2">
-                <ListView x:Name="znajomi" Margin="25" Height="470" 
+                <ListView x:Name="znajomi" Margin="25" Height="429" 
                           ItemsSource="{Binding AddCarVm.SamochodyLista, UpdateSourceTrigger=PropertyChanged}"
                           SelectedIndex="{Binding AddCarVm.ZaznaczonySamochod, Mode=TwoWay}">
                     <i:Interaction.Triggers>

@@ -21,7 +21,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" >
                 <Label Content="Pracownik" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" Background="#FFACACAC" Foreground="White" BorderBrush="Beige" Text="{Binding SellersStatsVm.Pracownik}"/>
+                <TextBox Margin="5" Background="#FFACACAC" Foreground="White" BorderBrush="Beige" IsEnabled="False" Text="{Binding SellersStatsVm.Pracownik}"/>
                 <Label Content="Sprzedane pojazdy" Margin="10" FontSize="15" Foreground="White"/>
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding SellersStatsVm.SprzedanePojazdy}"/>
                 <Label Content="Łączna wartość sprzedanych pojazdów" Margin="10" FontSize="15" Foreground="White"/>

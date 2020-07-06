@@ -9,7 +9,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
     {
         #region SQL_QUERIES
         private const string WSZYSCY_PRACOWNICY = "SELECT * FROM Pracownicy";
-        private const string DODAJ_PRACOWNIKA = "INSERT INTO `Pracownicy`(`login`, `password`, `imie`, `nazwisko`,'premia') VALUES ";
+        private const string DODAJ_PRACOWNIKA = "INSERT INTO `Pracownicy`(`login`, `password`, `imie`, `nazwisko`,`premia`) VALUES ";
         private const string USUN_PRACOWNIKA = "DELETE FROM `Pracownicy` WHERE idPracownika=";
         private const string USUN_SPRZEDAZE_PRACOWNIKA = "DELETE FROM `Sprzedaz` WHERE idPracownika=";
         #endregion
