@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using MySql.Data.MySqlClient;
+using Renci.SshNet.Messages;
 
 namespace Salon_samochodowy.DAL.Repozytoria
 {
@@ -23,7 +25,8 @@ namespace Salon_samochodowy.DAL.Repozytoria
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand(WSZYSTKIE_SPRZEDAZE, connection);
-                connection.Open();
+                try { connection.Open(); }
+                catch { MessageBox.Show("Błąd połączenia z baza MYSQL!"); Application.Current.Shutdown(); }
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                     sprzedaze.Add(new Sprzedaz(reader));
@@ -39,7 +42,8 @@ namespace Salon_samochodowy.DAL.Repozytoria
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand($"{DODAJ_SPRZEDAZ} {sprzedaz.ToInsert()}", connection);
-                connection.Open();
+                try { connection.Open(); }
+                catch { MessageBox.Show("Błąd połączenia z baza MYSQL!"); Application.Current.Shutdown(); }
                 var id = command.ExecuteNonQuery();
                 stan = true;
                 sprzedaz.IdSprzedazy = (sbyte)command.LastInsertedId;
@@ -57,7 +61,8 @@ namespace Salon_samochodowy.DAL.Repozytoria
             {
 
                 MySqlCommand command = new MySqlCommand($"{USUN_SPRZEDAZ} {idSprzedazy}", connection);
-                connection.Open();
+                try { connection.Open(); }
+                catch { MessageBox.Show("Błąd połączenia z baza MYSQL!"); Application.Current.Shutdown(); }
                 command.ExecuteNonQuery();
                 stan = true;
                 connection.Close();

@@ -23,7 +23,8 @@ namespace Salon_samochodowy.DAL.Repozytoria
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand(WSZYSCY_PRACOWNICY, connection);
-                connection.Open();
+                try { connection.Open(); }
+                catch { MessageBox.Show("Błąd połączenia z baza MYSQL!"); Application.Current.Shutdown(); }
                 var reader = command.ExecuteReader();
                 while (reader.Read()) 
                     pracownicy.Add(new Pracownik(reader));
@@ -41,7 +42,8 @@ namespace Salon_samochodowy.DAL.Repozytoria
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand($"{DODAJ_PRACOWNIKA} {pracownik.ToInsert()}", connection);
-                connection.Open();
+                try { connection.Open(); }
+                catch { MessageBox.Show("Błąd połączenia z baza MYSQL!"); Application.Current.Shutdown(); }
                 var id = command.ExecuteNonQuery();
                 stan = true;
                 pracownik.Id = (sbyte) command.LastInsertedId;
@@ -63,7 +65,8 @@ namespace Salon_samochodowy.DAL.Repozytoria
 
                 MySqlCommand command = new MySqlCommand(EDYTUJ_PRACOWNIKA, connection);
                 MessageBox.Show(EDYTUJ_PRACOWNIKA);
-                connection.Open();
+                try { connection.Open(); }
+                catch { MessageBox.Show("Błąd połączenia z baza MYSQL!"); Application.Current.Shutdown(); }
                 var n = command.ExecuteNonQuery();
                 if (n == 1) stan = true;
 
@@ -81,7 +84,8 @@ namespace Salon_samochodowy.DAL.Repozytoria
 
                 MySqlCommand command1 = new MySqlCommand($"{USUN_PRACOWNIKA} {idPracownika}", connection);
                 MySqlCommand command2 = new MySqlCommand($"{USUN_SPRZEDAZE_PRACOWNIKA} {idPracownika}", connection);
-                connection.Open();
+                try { connection.Open(); }
+                catch { MessageBox.Show("Błąd połączenia z baza MYSQL!"); Application.Current.Shutdown(); }
                 command1.ExecuteNonQuery();
                 command2.ExecuteNonQuery();
                 stan = true;
