@@ -109,6 +109,7 @@ namespace Salon_samochodowy.ViewModel
 
         #endregion
 
+        //Czyszczenie formularza
         private void ClearAll()
         {
             Pracownik = "";
@@ -117,12 +118,14 @@ namespace Salon_samochodowy.ViewModel
             PremiaZeSprzedazy = "";
         }
 
+        //Przygotowanie i ładowanie informacji do formularza
         private void LadujInformacje(int IdPracownika, int idZListy)
         {
             double cenaSuma = 0;
             double premiasuma = 0;
             int sprzedaneCount = 0;
             
+            //Obliczanie sumy sprzedanych samochodów, premii, oraz liczby sprzedaży
             foreach (var s in Sprzedaze)
             {
                 if (IdPracownika == s.IdPracownika)
@@ -142,6 +145,8 @@ namespace Salon_samochodowy.ViewModel
 
         #region Komendy
 
+
+        //Akcja załadowania informacji o pracowniku do formularza
         private ICommand zaladujInformacje = null;
         public ICommand ZaladujInformacje
         {

@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Salon_samochodowy.ViewModel
 {
     using BaseClass;
     using DAL.Encje;
     using Model;
-    using Salon_samochodowy.DAL.Repozytoria;
-    using Salon_samochodowy.View;
-    using System.Collections.ObjectModel;
-    using System.Data.SqlTypes;
-    using System.Windows;
-    using System.Windows.Input;
 
     class AddCarVM : ViewModelBase
     {
@@ -31,6 +24,7 @@ namespace Salon_samochodowy.ViewModel
 
         #region Konstruktory
 
+        //Konkstruktor przyjmujący obiekt modelu
         public AddCarVM(Model model)
         {
             this.model = model;
@@ -46,8 +40,7 @@ namespace Salon_samochodowy.ViewModel
         #region Właściwości
 
         public ObservableCollection<Samochod> Samochody { get; set; }
-        public Samochod BiezacySamochod { get; set; }
-
+        
         public string Marka
         {
             get => marka;
@@ -150,6 +143,7 @@ namespace Salon_samochodowy.ViewModel
 
         #endregion
 
+        //Czyszczenie formularza
         private void ClearAll()
         {
             Marka = "";
@@ -162,6 +156,7 @@ namespace Salon_samochodowy.ViewModel
             RokProdukcji = "";
         }
 
+        //Ładowanie informacji do formularza
         private void LadujInformacje(int IdSamochodu)
         {
             Marka = Samochody[IdSamochodu].Marka;
@@ -176,6 +171,8 @@ namespace Salon_samochodowy.ViewModel
 
         #region Komendy
 
+
+        //Dodawanie samochodu
         private ICommand dodajSamochod = null;
         public ICommand DodajSamochod
         {
@@ -206,6 +203,7 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
+        //Edycja samochodu
         private ICommand edytuj = null;
         public ICommand Edytuj
         {
@@ -240,7 +238,7 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
-
+        //Usunięcie samochodu
         private ICommand usun = null;
         public ICommand Usun
         {
@@ -262,11 +260,7 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
-
-
-
-
-
+        //Ładowanie informacji w formularzu
         private ICommand zaladujInformacje = null;
         public ICommand ZaladujInformacje
         {
@@ -276,7 +270,6 @@ namespace Salon_samochodowy.ViewModel
                     zaladujInformacje = new RelayCommand(
                         arg =>
                         {
-
                             if (ZaznaczonySamochod != -1)
                             {
                                 LadujInformacje(ZaznaczonySamochod);

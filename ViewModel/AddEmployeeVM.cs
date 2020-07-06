@@ -129,7 +129,7 @@ namespace Salon_samochodowy.ViewModel
         }
         #endregion
 
-
+        //Czyszczenie formularza
         private void ClearAll()
         {
             Imie = "";
@@ -140,6 +140,7 @@ namespace Salon_samochodowy.ViewModel
             EdycjaDostepna = false;
         }
 
+        //Ładowanie informacji do formularza
         private void LadujInformacje(int IdPracownika)
         {
             Imie = Pracownicy[IdPracownika].Imie;
@@ -150,6 +151,7 @@ namespace Salon_samochodowy.ViewModel
 
         #region Komendy
 
+        //Dodawanie pracownika
         private ICommand dodaj = null;
         public ICommand Dodaj
         {
@@ -177,6 +179,7 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
+        //Edycja pracownika
         private ICommand edytuj = null;
         public ICommand Edytuj
         {
@@ -207,7 +210,7 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
-
+        //Usunięcie pracownika
         private ICommand usun = null;
         public ICommand Usun
         {
@@ -229,6 +232,7 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
+        //Ładowanie danych do formularza 
         private ICommand zaladujInformacje = null;
         public ICommand ZaladujInformacje
         {
@@ -238,7 +242,6 @@ namespace Salon_samochodowy.ViewModel
                     zaladujInformacje = new RelayCommand(
                         arg =>
                         {
-
                             if (ZaznaczonyPracownik != -1)
                             {
                                 LadujInformacje(ZaznaczonyPracownik);

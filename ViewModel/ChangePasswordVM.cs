@@ -24,7 +24,6 @@ namespace Salon_samochodowy.ViewModel
 
         #region Konstruktory
 
-
         public ChangePasswordVM(Model model)
         {
             this.model = model;
@@ -67,7 +66,9 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
+        #endregion
 
+        //Czyszczenie formularza
         private void ClearAll()
         {
             OldPassword = "";
@@ -75,10 +76,9 @@ namespace Salon_samochodowy.ViewModel
             ChangeEnable = true;
         }
 
-        #endregion
-
         #region Komendy
 
+        //Akcja zmiany hasła po kliknięciu w przycisk
         private ICommand zmieniaj = null;
         public ICommand Zmieniaj
         {
@@ -113,7 +113,6 @@ namespace Salon_samochodowy.ViewModel
                 return zmieniaj;
             }
         }
-
 
         #endregion
 

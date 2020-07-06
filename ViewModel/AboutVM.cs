@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Salon_samochodowy.ViewModel
 {
+    //klasa niewymagająca implementacji ViewModelu
     class AboutVM
     {
     }

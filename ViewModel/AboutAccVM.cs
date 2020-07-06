@@ -1,31 +1,32 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using Salon_samochodowy.DAL.Encje;
-using Salon_samochodowy.DAL.Repozytoria;
-using Salon_samochodowy.ViewModel.BaseClass;
-using Salon_samochodowy.Model;
-using Salon_samochodowy.View;
+﻿using System.Windows.Input;
 
 namespace Salon_samochodowy.ViewModel
 {
     using BaseClass;
     using Model;
     using DAL.Encje;
-    using System.Collections.ObjectModel;
-
+    
     class AboutAccVM : ViewModelBase
     {
+        #region SkładowePrywatne
+
         private Model model = null;
         private Pracownik zalogowany;
         private string imieNazwisko, id, typUsera;
 
+        #endregion
+
+        #region Konstruktor
 
         public AboutAccVM(Model model)
         {
             this.model = model;
             zalogowany = model.Zalogowany;
-           
         }
+
+        #endregion
+
+        #region Właściwości
 
         public string ImieNazwisko
         {
@@ -55,6 +56,8 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
+        #endregion
+
         public void ZaladujDane(Pracownik pr)
         {
 
@@ -67,6 +70,7 @@ namespace Salon_samochodowy.ViewModel
             onPropertyChanged(nameof(typUsera));
         }
 
+        #region Komendy
 
         private ICommand laduj = null;
         public ICommand Laduj
@@ -85,6 +89,9 @@ namespace Salon_samochodowy.ViewModel
                 return laduj;
             }
         }
+
+        #endregion
+
 
     }
 }

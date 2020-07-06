@@ -16,11 +16,13 @@ namespace Salon_samochodowy.ViewModel
 
     class ViewModel
     {
+        //deklaracja obiektu UserContext przechowującego zalogowanego pracownika
         UserContext userContext;
 
+        //utworzenie Modelu na którym bazuje ViewModel
         private static Model model = new Model();
 
-       
+        //Deklaracje ViewModeli wszystkich kontrolek
         public LoginVM LoginVm { get; set; }
         public AboutAccVM AboutAccVm { get; set; }
         public AddCarVM AddCarVm { get; set; }
@@ -29,6 +31,7 @@ namespace Salon_samochodowy.ViewModel
         public SellersStatsVM SellersStatsVm { get; set; }
         public SellingVM SellingVM { get; set; }
 
+        //Inicjalizacja w konstruktorze
         public ViewModel()
         {
             userContext = UserContext.Instance;
