@@ -13,18 +13,35 @@
     </UserControl.Resources>
 
     <Border Background="#FF31577E" CornerRadius="25"  Margin="10" DataContext="{StaticResource mainVM}">
-        <StackPanel Margin="25" Background="#FF5C99D6" >
-            <ListView x:Name="znajomi" Margin="10" Height="350" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
-                          ItemsSource="{Binding AddCarVm.SamochodyLista, UpdateSourceTrigger=PropertyChanged}"
-                          SelectedIndex="{Binding AddCarVm.ZaznaczonySamochod, Mode=TwoWay}">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding AddCarVm.ZaladujInformacje}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </ListView>
-            <Button Content="Opis pojazdu" Height="40" Width="350" Margin="5" Background="#FF31577E" BorderBrush="Beige" Command="{Binding AddCarVm.OpisPojazdu}"/>
-            <Button Content="Sprzedaj" Height="40" Width="350" Margin="5" Background="#FF31577E" BorderBrush="Beige"/>
-        </StackPanel>
+        <Grid Margin="25" Background="#FF5C99D6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+
+                <Label Content="Silnik:" Margin="10" FontSize="15" Foreground="White"/>
+                <TextBox Margin="20,5,20,5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding SellingVM.Silnik, Mode=TwoWay}" IsEnabled="False"/>
+                <Label Content="Moc:" Margin="10" FontSize="15" Foreground="White"/>
+                <TextBox Margin="20,5,20,5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding SellingVM.Moc, Mode=TwoWay}" IsEnabled="False"/>
+                <Label Content="Kraj produkcji:" Margin="10" FontSize="15" Foreground="White"/>
+                <TextBox Margin="20,5,20,5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding SellingVM.KrajProdukcji, Mode=TwoWay}" IsEnabled="False"/>
+                <Label Content="Kolor:" Margin="10" FontSize="15" Foreground="White"/>
+                <TextBox Margin="20,5,20,5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding SellingVM.Kolor, Mode=TwoWay}" IsEnabled="False"/>
+                <Button x:Name="button_Sprzedaz" Content="Sprzedaż" Background="#FF31577E" BorderBrush="Beige" Margin="20" Command="{Binding SellingVM.SprzedajPojazd}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="0">
+                <ListView x:Name="znajomi" Margin="25" Height="430" 
+                          ItemsSource="{Binding SellingVM.SamochodyLista, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedIndex="{Binding SellingVM.ZaznaczonySamochod, Mode=TwoWay}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SellingVM.ZaladujInformacje}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListView>
+            </StackPanel>
+        </Grid>
     </Border>
 </UserControl>

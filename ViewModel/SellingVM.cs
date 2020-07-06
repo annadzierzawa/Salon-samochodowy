@@ -10,6 +10,7 @@ namespace Salon_samochodowy.ViewModel
     using DAL.Encje;
     using Model;
     using Salon_samochodowy.DAL.Repozytoria;
+    using Salon_samochodowy.View;
     using System.Collections.ObjectModel;
     using System.Data.SqlTypes;
     using System.Windows;
@@ -30,16 +31,13 @@ namespace Salon_samochodowy.ViewModel
 
         #region Konstruktory
 
-        // TRZEBA COS ZROBIC Z TA KLASA, Z NIEWIADOMYCH PRZYCZYN VS JEJ NIE UZNAJE, NAWET NIE DAJE JEJ W PODPOWIEDZIACH I ROBIAC FUNKCJONALNOSCI DLA WIDOKU SELLING UZYWALEM KLASY AddCarVM
-        // POTEM BEDE POTRZEBOWAL Z TYM POMOCY
-
         public SellingVM(Model model)
         {
             this.model = model;
             Samochody = model.Samochody;
             foreach (var samochod in Samochody)
             {
-                samochodyLista.Add($"{samochod.Marka} {samochod.ModelPojazdu}");
+                samochodyLista.Add($"{samochod.Marka} {samochod.ModelPojazdu} z rocznika {samochod.DataProdukcji} w cenie {samochod.Cena} zł");
             }
         }
 
@@ -178,36 +176,6 @@ namespace Salon_samochodowy.ViewModel
 
         #region Komendy
 
-        private ICommand dodajSamochod = null;
-        public ICommand DodajSamochod
-        {
-            get
-            {
-                if (dodajSamochod != null)
-                    return dodajSamochod;
-                dodajSamochod = new RelayCommand(
-                    arg =>
-                    {
-                        var samochod = new Samochod(Marka, modelPojazdu, Silnik, Kolor, KrajProdukcji, rokProdukcji, Cena, Moc);
-                        if (!model.DodajSamochod(samochod))
-                            return;
-                        ClearAll();
-                        onPropertyChanged(nameof(marka));
-                        onPropertyChanged(nameof(modelPojazdu));
-                        onPropertyChanged(nameof(cena));
-                        onPropertyChanged(nameof(moc));
-                        onPropertyChanged(nameof(kolor));
-                        onPropertyChanged(nameof(rokProdukcji));
-                        onPropertyChanged(nameof(krajProdukcji));
-                        onPropertyChanged(nameof(silnik));
-                        System.Windows.MessageBox.Show($"{Marka} {ModelPojazdu} został dodany do bazy!");
-                    },
-                    arg => (Marka != "") && (ModelPojazdu != "") && (Silnik != "") && (Kolor != "") && (KrajProdukcji != "") && (RokProdukcji != "") && (Cena > 0) && (Moc > 0)
-                    );
-                return dodajSamochod;
-            }
-        }
-
         private ICommand zaladujInformacje = null;
         public ICommand ZaladujInformacje
         {
@@ -232,6 +200,26 @@ namespace Salon_samochodowy.ViewModel
                     );
 
                 return zaladujInformacje;
+            }
+        }
+
+        private ICommand sprzedajPojazd = null;
+        public ICommand SprzedajPojazd
+        {
+            get
+            {
+                if (sprzedajPojazd == null)
+                    sprzedajPojazd = new RelayCommand(
+                        arg =>
+                        {
+                            var sprzedaz = new Sprzedaz(Convert.ToSByte(model.Zalogowany.Id), Convert.ToSByte(zaznaczonySamochod + 1), Cena);
+                            if (!model.DodajSprzedaz(sprzedaz))
+                                return;
+                            MessageBox.Show("Pojazd sprzedany!");
+                        },
+                        arg => true
+                        ); 
+                return sprzedajPojazd;
             }
         }
 

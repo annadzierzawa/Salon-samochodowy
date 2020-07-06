@@ -200,7 +200,7 @@ namespace Salon_samochodowy.ViewModel
                         onPropertyChanged(nameof(silnik));
                         System.Windows.MessageBox.Show($"{Marka} {ModelPojazdu} został dodany do bazy!");
                     },
-                    arg => (Marka != "") && (ModelPojazdu != "") && (Silnik != "") && (Kolor != "") && (KrajProdukcji != "") && (RokProdukcji != "") && (Cena > 0) && (Moc > 0)
+                    arg => (Marka != "") && (ModelPojazdu != "") && (Silnik != "") && (Kolor != "") && (KrajProdukcji != "") && (RokProdukcji != "") && (Moc != 0) && (Cena != 0)
                     );
                 return dodajSamochod;
             }
@@ -291,24 +291,6 @@ namespace Salon_samochodowy.ViewModel
                     );
 
                 return zaladujInformacje;
-            }
-        }
-
-        private ICommand opisPojazdu = null;
-        public ICommand OpisPojazdu
-        {
-            get
-            {
-                if (opisPojazdu == null)
-                    opisPojazdu = new RelayCommand(
-                        arg =>
-                        {
-                            AboutCar aboutCar = new AboutCar();
-                            aboutCar.Show();
-                        },
-                        arg => true
-                        );
-                return opisPojazdu;
             }
         }
 

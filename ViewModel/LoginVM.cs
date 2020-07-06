@@ -101,7 +101,7 @@ namespace Salon_samochodowy.ViewModel
                                 ClearAll();
                             }
                         },
-                        arg => (Login != "") && (Password != "")
+                        arg => (Login != "") 
                     );
 
                 return loguj;
