@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Salon_samochodowy
 {
-    /*
-     * Singleton odpowiedzialny za trzymanie informacji o aktualnym użytkowniku
-    */
+    
+    //Klasa odpowiadająca za utrzymywanie w programie informacji o zalogowanym Pracowniku
     public class UserContext
     {
-        private static UserContext _instance = null;
 
+        private static UserContext _instance = null;
         public static UserContext Instance
         {
             get
@@ -27,7 +26,6 @@ namespace Salon_samochodowy
         }
         
         private Pracownik _currentUser;
-
         public Pracownik CurrentUser { get
             {
                 return _currentUser;
@@ -38,9 +36,6 @@ namespace Salon_samochodowy
             }
         }
 
-        private UserContext()
-        {
-            
-        }
+        private UserContext() { }
     }
 }

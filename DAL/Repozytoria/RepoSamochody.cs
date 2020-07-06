@@ -7,6 +7,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
     using Encje;
     public class RepoSamochody
     {
+
         #region SQL_QUERIES
         private const string WSZYSTKIE_SAMOCHODY = "SELECT * FROM Samochody";
         private const string DODAJ_SAMOCHOD = "INSERT INTO `Samochody`(`marka`, `model`, `silnik`, `moc`, `kolor`, `krajProdukcji`,`dataProdukcji`, `cenaModelu`) VALUES ";
@@ -16,7 +17,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
 
         #region CRUD
 
-
+        //MYSQL - Pobranie wszystkich samochodów z bazy
         public static List<Samochod> PobierzWszystkieSamochody()
         {
             List<Samochod> samochody = new List<Samochod>();
@@ -33,6 +34,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
             return samochody;
         }
 
+        //MYSQL - dodanie samochodu do bazy
         public static bool DodajSamochodDoBazy(Samochod samochod)
         {
             bool stan = false;
@@ -50,7 +52,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
             return stan;
         }
 
-
+        //MYSQL - Edytowanie samochodu w bazie
         public static bool EdytujSamochod(Samochod samochod, sbyte idSamochodu)
         {
             bool stan = false;
@@ -73,6 +75,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
             return stan;
         }
 
+        //MYSQL - Usunięcie samochodu z bazy
         public static bool UsunSamochod(sbyte idSamochodu)
         {
             bool stan = false;
@@ -90,7 +93,6 @@ namespace Salon_samochodowy.DAL.Repozytoria
             return stan;
         }
         #endregion
-
 
     }
 }

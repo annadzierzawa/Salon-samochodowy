@@ -3,14 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Salon_samochodowy.View"
         xmlns:viewModel="clr-namespace:Salon_samochodowy.ViewModel"
         mc:Ignorable="d"
         Title="Zmiana Hasła" Height="400" Width="400" Background="#FFACACAC"   
         >
+    <!-- Deklaracja ViewModelu -->
     <Window.Resources>
         <viewModel:ViewModel x:Key="mainVM"/>
     </Window.Resources>
+
+    <!-- Blok główny-->
     <Border Background="#FF31577E" CornerRadius="10"  Margin="10" DataContext="{StaticResource mainVM}" >
         <StackPanel Margin="20"  Background="#FF5C99D6" >
             <Label Content="Informacje o koncie" Foreground="White"  FontSize="25" HorizontalAlignment="Center"/>

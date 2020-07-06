@@ -8,17 +8,21 @@
              xmlns:viewModel="clr-namespace:Salon_samochodowy.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="1010" Background="#FFACACAC">
-    
+
+    <!-- Deklaracja ViewModelu -->
     <UserControl.Resources>
         <viewModel:ViewModel x:Key="mainVM"/>
     </UserControl.Resources>
 
+    <!-- Blok Główny -->
     <Border Background="#FF31577E" CornerRadius="25"  Margin="10" DataContext="{StaticResource mainVM}">
         <Grid Margin="25" Background="#FF5C99D6" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
+            <!-- Layout Formularza strona lewa -->
             <StackPanel Grid.Column="0" >
                 <Label Content="Imie:" Margin="10" FontSize="15" Foreground="White"/>
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddEmployeeVm.Imie, Mode=TwoWay}"/>
@@ -28,7 +32,8 @@
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddEmployeeVm.Login, Mode=TwoWay}"/>
                 <Label Content="Hasło:" Margin="10" FontSize="15" Foreground="White"/>
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddEmployeeVm.Password, Mode=TwoWay}"/>
-
+                
+                <!-- Przyciski -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -41,6 +46,7 @@
                 </Grid>
             </StackPanel>
 
+            <!-- Lista pracowników -->
             <StackPanel Grid.Column="1" >
                 <ListView x:Name="znajomi" Margin="25" Height="470" 
                           ItemsSource="{Binding AddEmployeeVm.PracownicyLista}"
@@ -52,6 +58,7 @@
                     </i:Interaction.Triggers>
                 </ListView>
             </StackPanel>
+
         </Grid>
     </Border>
 </UserControl>

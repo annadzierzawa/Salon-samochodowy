@@ -8,10 +8,13 @@
              xmlns:local="clr-namespace:Salon_samochodowy.View"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="1010" Background="#FFACACAC">
+
+    <!-- Deklaracja ViewModelu -->
     <UserControl.Resources>
         <viewModel:ViewModel x:Key="mainVM"/>
     </UserControl.Resources>
 
+    <!-- Blok Główny -->
     <Border Background="#FF31577E" CornerRadius="25"  Margin="10" DataContext="{StaticResource mainVM}">
         <Grid Margin="25" Background="#FF5C99D6">
             <Grid.ColumnDefinitions>
@@ -20,6 +23,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
+            <!-- Layout Formularza strona lewa -->
             <StackPanel Grid.Column="0" >
                 <Label Content="Marka:" Margin="10" FontSize="15" Foreground="White"/>
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddCarVm.Marka, Mode=TwoWay}"/>
@@ -31,15 +36,9 @@
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddCarVm.Kolor, Mode=TwoWay}"/>
                 <Button x:Name="button_Edytuj" Content="Edytuj" Background="#FF31577E" BorderBrush="Beige" Margin="10" Command="{Binding AddCarVm.Edytuj}"/>
                 <Button x:Name="button_Dodaj" Content="Dodaj" Margin="10,10,-225,10" Background="#FF31577E" BorderBrush="Beige" Command="{Binding AddCarVm.DodajSamochod}"/>
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
             </StackPanel>
+
+            <!-- Layout Formularza strona prawa -->
             <StackPanel Grid.Column="1">
                 <Label Content="Model:" Margin="10" FontSize="15" Foreground="White"/>
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddCarVm.ModelPojazdu, Mode=TwoWay}"/>
@@ -50,8 +49,9 @@
                 <Label Content="Cena:" Margin="10" FontSize="15" Foreground="White"/>
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddCarVm.Cena, Mode=TwoWay}"/>
                 <Button x:Name="button_Usun" Content="Usuń"  Background="#FF31577E" BorderBrush="Beige" Margin="10" Command="{Binding AddCarVm.Usun}"/>
-
             </StackPanel>
+
+            <!-- Lista Samochodów -->
             <StackPanel Grid.Column="2" Grid.ColumnSpan="2">
                 <ListView x:Name="znajomi" Margin="25" Height="429" 
                           ItemsSource="{Binding AddCarVm.SamochodyLista, UpdateSourceTrigger=PropertyChanged}"

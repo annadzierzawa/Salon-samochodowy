@@ -7,13 +7,16 @@ namespace Salon_samochodowy.DAL.Repozytoria
     public class RepoSprzedazy
     {
 
-        #region ZAPYTANIA
+        #region SQL_QUERIES
         private const string WSZYSTKIE_SPRZEDAZE = "SELECT * FROM Sprzedaz";
         private const string DODAJ_SPRZEDAZ = "INSERT INTO `Sprzedaz`(`idPracownika`, `idModelu`, `cena`) VALUES ";
         private const string USUN_SPRZEDAZ = "DELETE FROM `Sprzedaz` WHERE idSprzedazy=";
 
         #endregion
 
+        #region CRUD
+
+        //MYSQL - Pobranie wszystkich sprzedaży z bazy
         public static List<Sprzedaz> PobierzWszystkieSprzedaze()
         {
             List<Sprzedaz> sprzedaze = new List<Sprzedaz>();
@@ -29,6 +32,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
             return sprzedaze;
         }
 
+        //MYSQL - Dodanie sprzedaży do bazy
         public static bool DodajSprzedazDoBazy(Sprzedaz sprzedaz)
         {
             bool stan = false;
@@ -45,6 +49,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
             return stan;
         }
 
+        //MYSQL - Usunięcie sprzedaży z bazy [brak implementacji]
         public static bool UsunSprzedaz(sbyte idSprzedazy)
         {
             bool stan = false;
@@ -60,5 +65,6 @@ namespace Salon_samochodowy.DAL.Repozytoria
             return stan;
         }
 
+        #endregion
     }
 }

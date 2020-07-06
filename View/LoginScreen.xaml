@@ -9,10 +9,12 @@
         x:Name="window"
         Title="LoginScreen" Height="400" Width="400" Background="#FFACACAC" ResizeMode="NoResize">
 
+    <!-- Deklaracja ViewModelu -->
     <Window.Resources>
         <vm:ViewModel x:Key="mainVM"/>
     </Window.Resources>
 
+    <!-- Blok Główny -->
     <Border Background="#FF31577E" CornerRadius="10"  Margin="10" DataContext="{StaticResource mainVM}">
         <StackPanel Margin="20"  Background="#FF5C99D6" >
             <Label Content="Login" Foreground="White"  FontSize="25" HorizontalAlignment="Center"/>

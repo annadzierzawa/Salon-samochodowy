@@ -15,7 +15,6 @@ namespace Salon_samochodowy.ViewModel
 
         private Model model = null;
         private string login, password;
-        
 
         #endregion
 
@@ -52,19 +51,18 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
-
         #endregion
 
-
+        //Czyszczenie formularza
         private void ClearAll()
         {
             Login = "";
             Password = "";
         }
 
-
         #region Komendy
 
+        //Akcja zalogowania po kliknięciu w przycisk
         private ICommand loguj = null;
         public ICommand Loguj
         {

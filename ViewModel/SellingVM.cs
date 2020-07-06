@@ -150,6 +150,7 @@ namespace Salon_samochodowy.ViewModel
 
         #endregion
 
+        //Czyszczenie formularza
         private void ClearAll()
         {
             Marka = "";
@@ -162,6 +163,7 @@ namespace Salon_samochodowy.ViewModel
             RokProdukcji = "";
         }
 
+        //Załadowanie informacji do formularza
         private void LadujInformacje(int IdSamochodu)
         {
             Marka = Samochody[IdSamochodu].Marka;
@@ -176,6 +178,7 @@ namespace Salon_samochodowy.ViewModel
 
         #region Komendy
 
+        //Akcja załadowania informacji do formularza
         private ICommand zaladujInformacje = null;
         public ICommand ZaladujInformacje
         {
@@ -185,7 +188,6 @@ namespace Salon_samochodowy.ViewModel
                     zaladujInformacje = new RelayCommand(
                         arg =>
                         {
-
                             if (ZaznaczonySamochod != -1)
                             {
                                 LadujInformacje(ZaznaczonySamochod);
@@ -203,6 +205,7 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
+        //Akcja dodania sprzedaży po kliknięciu w przycisk
         private ICommand sprzedajPojazd = null;
         public ICommand SprzedajPojazd
         {

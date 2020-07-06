@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Salon_samochodowy.View"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="1010" Background="#91c5ff">
+    <!-- Blok Główny --> 
     <Border Background="#FF31577E" CornerRadius="25"  Margin="10">
         <StackPanel Margin="25" Background="#FF5C99D6">
             <Label Content="Authors:" Foreground="White"  FontSize="25" HorizontalAlignment="Center" Margin="10"/>

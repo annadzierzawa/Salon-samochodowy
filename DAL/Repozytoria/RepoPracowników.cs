@@ -16,6 +16,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
 
         #region CRUD
 
+        //MYSQL - pobranie wszystkich Pracowników
         public static List<Pracownik> PobierzWszystkichPracownikow()
         {
             List<Pracownik> pracownicy = new List<Pracownik>();
@@ -32,6 +33,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
             return pracownicy;
         }
 
+        //MYSQL - Dodanie pracownika do bazy
         public static bool DodajPracownikaDoBazy(Pracownik pracownik)
         {
             bool stan = false;
@@ -49,6 +51,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
             return stan;
         }
 
+        //MYSQL - Edytowanie pracownika w bazie
         public static bool EdytujPracownika(Pracownik pracownik, sbyte idPracownika)
         {
             bool stan = false;
@@ -69,6 +72,7 @@ namespace Salon_samochodowy.DAL.Repozytoria
             return stan;
         }
 
+        //MYSQL - usunięcie pracownika z bazy
         public static bool UsunPracownika(sbyte idPracownika)
         {
             bool stan = false;
@@ -87,7 +91,6 @@ namespace Salon_samochodowy.DAL.Repozytoria
         }
 
         #endregion
-
 
     }
 }
