@@ -23,11 +23,14 @@ namespace Salon_samochodowy
     public partial class MainWindow : Window
     {
         private Model.Model model;
+        public UserContext user;
         public MainWindow()
         {
             InitializeComponent();
             model = new Model.Model();
             DataContext = new SellingVM(model);
+            user = UserContext.Instance;
+            txtUserName.Text = user.CurrentUser.Imie + " " + user.CurrentUser.Nazwisko;
         }
 
         private void ItemCreate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -58,17 +61,38 @@ namespace Salon_samochodowy
 
         private void SellersStats_OnClick(object sender, RoutedEventArgs e)
         {
+            if (user.CurrentUser.Id != 1)
+            {
+                MessageBox.Show("Nie jesteś właścicielem, nie masz uprawnień do przeglądania tej zawartości.");
+                return;
+            }
             DataContext = new SellersStatsVM(model);
         }
 
         private void AddEmployee_OnClick(object sender, RoutedEventArgs e)
         {
+            if (user.CurrentUser.Id != 1)
+            {
+                MessageBox.Show("Nie jesteś właścicielem, nie masz uprawnień do przeglądania tej zawartości.");
+                return;
+            }
             DataContext = new AddEmployeeVM(model);
         }
 
         private void Logout_OnClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void AccountInfo_OnClick(object sender, RoutedEventArgs e)
+        {
+            AboutAcc ab = new AboutAcc();
+            ab.Show();
+        }
+
+        private void Help_OnClick(object sender, RoutedEventArgs e)
+        {
+            DataContext = new AboutVM();
         }
     }
 }

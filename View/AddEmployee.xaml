@@ -36,8 +36,8 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Button x:Name="button_Dodaj" Grid.Column="0" Content="Dodaj" Margin="10" Background="#FF31577E" BorderBrush="Beige" Command="{Binding AddEmployeeVm.Dodaj}"/>
-                    <Button x:Name="button_Edytuj" Grid.Column="1" Content="Edytuj" Margin="10" Background="#FF31577E" BorderBrush="Beige"/>
-                    <Button x:Name="button_Usun" Grid.Column="2" Content="Usuń" Margin="10" Background="#FF31577E" BorderBrush="Beige"/>
+                    <Button x:Name="button_Edytuj" Grid.Column="1" Content="Edytuj" Margin="10" Background="#FF31577E" BorderBrush="Beige"  Command="{Binding AddEmployeeVm.Edytuj}"/>
+                    <Button x:Name="button_Usun" Grid.Column="2" Content="Usuń" Margin="10" Background="#FF31577E" BorderBrush="Beige" Command="{Binding AddEmployeeVm.Usun}"/>
                 </Grid>
             </StackPanel>
 

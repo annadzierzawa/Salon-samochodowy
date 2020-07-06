@@ -69,6 +69,7 @@ namespace Salon_samochodowy.ViewModel
             Login = "";
             Password = "";
             LoginDostepny = true;
+            onPropertyChanged(nameof(LoginDostepny));
         }
 
 

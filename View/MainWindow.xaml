@@ -56,13 +56,16 @@
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Dealer" VerticalAlignment="Center" FontSize="16"/>
+                <TextBlock x:Name="txtUserName" Text="Dealer" VerticalAlignment="Center" FontSize="16"/>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
+                        <Button Content="[W] Selling statistics"  Click="SellersStats_OnClick"/>
+                        <Button Content="[W] Manage Employee"  Click="AddEmployee_OnClick"/>
+
+                        <Separator/>
+                        <Button Content="Account Info" Click="AccountInfo_OnClick"/>
                         <Button Content="Change password" Click="Changepassword_OnClick"/>
-                        <Button Content="Selling statistics"  Click="SellersStats_OnClick"/>
-                        <Button Content="Add Employee"  Click="AddEmployee_OnClick"/>
-                        <Button Content="Help" />
+                        <Button Content="Help" Click="Help_OnClick"/>
 
                         <Separator/>
                         <Button Content="Logout" Click="Logout_OnClick"/>

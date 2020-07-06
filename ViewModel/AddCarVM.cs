@@ -206,6 +206,67 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
+        private ICommand edytuj = null;
+        public ICommand Edytuj
+        {
+            get
+            {
+                if (edytuj != null) return edytuj;
+                edytuj = new RelayCommand(
+                    arg =>
+                    {
+                        var samochod = new Samochod(Marka, modelPojazdu, Silnik, Kolor, KrajProdukcji, rokProdukcji, Cena, Moc);
+                        var idSamo = ZaznaczonySamochod;
+                        sbyte id = model.CheckIDSamochodu((sbyte)idSamo);
+
+                        if (!model.EdytujSamochod(samochod, id)) return;
+                        System.Windows.MessageBox.Show($"Samochod został edytowany! \n " +
+                                                       $"{Marka} {modelPojazdu}");
+                        ClearAll();
+                        onPropertyChanged(nameof(marka));
+                        onPropertyChanged(nameof(modelPojazdu));
+                        onPropertyChanged(nameof(cena));
+                        onPropertyChanged(nameof(moc));
+                        onPropertyChanged(nameof(kolor));
+                        onPropertyChanged(nameof(rokProdukcji));
+                        onPropertyChanged(nameof(krajProdukcji));
+                        onPropertyChanged(nameof(silnik));
+
+                    },
+                    arg => (Marka != "") && (ModelPojazdu != "") && (Silnik != "") && (Kolor != "") && (KrajProdukcji != "") && (RokProdukcji != "") && (Cena > 0) && (Moc > 0)
+                );
+
+                return edytuj;
+            }
+        }
+
+
+        private ICommand usun = null;
+        public ICommand Usun
+        {
+            get
+            {
+                if (usun != null) return usun;
+                usun = new RelayCommand(
+                    arg =>
+                    {
+                        var idToRemove = ZaznaczonySamochod;
+                        var s = model.CheckIDSamochodu((sbyte)idToRemove);
+                        model.UsunSamochod(s);
+                        MessageBox.Show($" Samochod {Marka} {modelPojazdu} został usunięty z bazy.");
+                    },
+                    arg => ZaznaczonySamochod != -1
+                );
+
+                return usun;
+            }
+        }
+
+
+
+
+
+
         private ICommand zaladujInformacje = null;
         public ICommand ZaladujInformacje
         {

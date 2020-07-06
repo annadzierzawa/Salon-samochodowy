@@ -4,18 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon_samochodowy.View"
+        xmlns:viewModel="clr-namespace:Salon_samochodowy.ViewModel"
         mc:Ignorable="d"
-        Title="Zmiana Hasła" Height="400" Width="400" Background="#FFACACAC"   >
-    <Border Background="#FF31577E" CornerRadius="10"  Margin="10">
+        Title="Zmiana Hasła" Height="400" Width="400" Background="#FFACACAC"   
+        >
+    <Window.Resources>
+        <viewModel:ViewModel x:Key="mainVM"/>
+    </Window.Resources>
+    <Border Background="#FF31577E" CornerRadius="10"  Margin="10" DataContext="{StaticResource mainVM}" >
         <StackPanel Margin="20"  Background="#FF5C99D6" >
             <Label Content="Informacje o koncie" Foreground="White"  FontSize="25" HorizontalAlignment="Center"/>
-            <Separator Background="#FF31577E" Height="10"></Separator>
-            <Label Content="Imię i Nazwisko" Foreground="White" Margin="5" FontSize="15"/>
-            <TextBox Background="#FFACACAC" Foreground="White" FontSize="15" Margin="5" IsEnabled="False"/>
-            <Label Content="Identyfikator" Foreground="White" Margin="5" FontSize="15"/>
-            <TextBox  Background="#FFACACAC" Foreground="White" FontSize="15"  Margin="5" IsEnabled="False"/>
-            <Label Content="Rodzaj użytktownika" Foreground="White" Margin="5" FontSize="15"/>
-            <TextBox  Background="#FFACACAC" Foreground="White" FontSize="15"  Margin="5" IsEnabled="False"/>
+            <Separator Background="#FF31577E" Height="5"></Separator>
+            <Label Content="Imię i Nazwisko" Foreground="White" Margin="5 0" FontSize="15" />
+            <TextBox Background="#FFACACAC" Foreground="White" FontSize="15" Margin="5 0" IsEnabled="True" Text="{Binding AboutAccVm.ImieNazwisko}"/>
+            <Label Content="Identyfikator" Foreground="White" Margin="5 0" FontSize="15"/>
+            <TextBox  Background="#FFACACAC" Foreground="White" FontSize="15"  Margin="5 0" IsEnabled="True" Text="{Binding AboutAccVm.Id}"/>
+            <Label Content="Rodzaj użytktownika" Foreground="White" Margin="5 0" FontSize="15"/>
+            <TextBox  Background="#FFACACAC" Foreground="White" FontSize="15"  Margin="5 0" IsEnabled="True" Text="{Binding AboutAccVm.TypUsera}"/>
+            <Button Content="Załaduj informacje" Margin="60 30"  Background="#FF31577E" BorderBrush="Beige" Foreground="White" FontSize="15"
+                    Command="{Binding AboutAccVm.Laduj}"
+                    />
         </StackPanel>
     </Border>
 </Window>

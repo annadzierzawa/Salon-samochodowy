@@ -118,6 +118,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="UserContext\UserContext.cs" />
+    <Compile Include="ViewModel\AboutAccVM.cs" />
     <Compile Include="ViewModel\AboutVM.cs" />
     <Compile Include="ViewModel\AddCarVM.cs" />
     <Compile Include="ViewModel\AddEmployeeVM.cs" />

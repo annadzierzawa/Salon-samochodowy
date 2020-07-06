@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using MySql.Data.MySqlClient;
 
 namespace Salon_samochodowy.DAL.Repozytoria
@@ -46,6 +47,29 @@ namespace Salon_samochodowy.DAL.Repozytoria
                 connection.Close();
             }
 
+            return stan;
+        }
+
+
+        public static bool EdytujSamochod(Samochod samochod, sbyte idSamochodu)
+        {
+            bool stan = false;
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                string EDYTUJ_SAMOCHOD = $"UPDATE Samochody SET marka='{samochod.Marka}', model='{samochod.ModelPojazdu}', " +
+                                           $"silnik='{samochod.Silnik}', moc='{samochod.Moc}'," +
+                                           $"kolor='{samochod.Kolor}', krajProdukcji='{samochod.KrajProdukcji}'," +
+                                           $"dataProdukcji='{samochod.DataProdukcji}', cenaModelu='{samochod.Cena}'" +
+                                           $"WHERE idModelu={idSamochodu};";
+
+                MySqlCommand command = new MySqlCommand(EDYTUJ_SAMOCHOD, connection);
+                MessageBox.Show(EDYTUJ_SAMOCHOD);
+                connection.Open();
+                var n = command.ExecuteNonQuery();
+                if (n == 1) stan = true;
+
+                connection.Close();
+            }
             return stan;
         }
 

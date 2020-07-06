@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -160,19 +161,71 @@ namespace Salon_samochodowy.ViewModel
                     {
                         var pracownik = new Pracownik(Login, Password, Imie, Nazwisko, 0);
                         if (!model.DodajPracownika(pracownik)) return;
+                        System.Windows.MessageBox.Show($"Pracownik został dodana do bazy! \n " +
+                                                       $"{Imie} {Nazwisko} | {Login} {Password}");
                         ClearAll();
                         onPropertyChanged(nameof(imie));
                         onPropertyChanged(nameof(nazwisko));
                         onPropertyChanged(nameof(login));
                         onPropertyChanged(nameof(password));
-                        System.Windows.MessageBox.Show($"Pracownik została dodana do bazy! \n " +
-                                                       $"{Imie} {Nazwisko} | {Login} {Password}");
                         
                     },
                     arg => (Imie != "") && (Nazwisko != "") && (Login != "") && (Password != "")
                 );
 
                 return dodaj;
+            }
+        }
+
+        private ICommand edytuj = null;
+        public ICommand Edytuj
+        {
+            get
+            {
+                if (edytuj != null) return edytuj;
+                edytuj = new RelayCommand(
+                    arg =>
+                    {
+                        var pracownik = new Pracownik(Login, Password, Imie, Nazwisko, 0);
+                        var idPracownika = ZaznaczonyPracownik;
+                        sbyte id = model.CheckIDPracownika((sbyte)idPracownika);
+                        
+                        if (!model.EdytujPracownika(pracownik, id)) return;
+                        System.Windows.MessageBox.Show($"Pracownik został edytowany! \n " +
+                                                       $"{Imie} {Nazwisko} | {Login} {Password}");
+                        ClearAll();
+                        onPropertyChanged(nameof(imie));
+                        onPropertyChanged(nameof(nazwisko));
+                        onPropertyChanged(nameof(login));
+                        onPropertyChanged(nameof(password));
+
+                    },
+                    arg => (Imie != "") && (Nazwisko != "") && (Login != "") && (Password != "")
+                );
+
+                return edytuj;
+            }
+        }
+
+
+        private ICommand usun = null;
+        public ICommand Usun
+        {
+            get
+            {
+                if (usun != null) return usun;
+                usun = new RelayCommand(
+                    arg =>
+                    {
+                        var idToRemove = ZaznaczonyPracownik;
+                        var s = model.CheckIDPracownika((sbyte)idToRemove);
+                        model.UsunPracownika(s);
+                        MessageBox.Show($" Pracownik {Imie} {Nazwisko} został usunięty z bazy.");
+                    },
+                    arg => ZaznaczonyPracownik != -1
+                );
+
+                return usun;
             }
         }
 

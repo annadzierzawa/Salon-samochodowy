@@ -5,18 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Salon_samochodowy.View"
              mc:Ignorable="d" 
-             d:DesignHeight="540" d:DesignWidth="1010" Background="#FFACACAC">
+             d:DesignHeight="540" d:DesignWidth="1010" Background="#91c5ff">
     <Border Background="#FF31577E" CornerRadius="25"  Margin="10">
         <StackPanel Margin="25" Background="#FF5C99D6">
-            <Label Content="Autorzy:" Foreground="White"  FontSize="35" HorizontalAlignment="Center" Margin="10"/>
-            <Separator Background="#FF31577E" Height="40"/>
-            <Label Content="Project Manager: Pawcio Silva" Foreground="White" FontSize="35" HorizontalAlignment="Center"/>
+            <Label Content="Authors:" Foreground="White"  FontSize="25" HorizontalAlignment="Center" Margin="10"/>
+            <Separator Background="#FF31577E" Height="30"/>
+            <Label Content="Project Manager: Szpak Kamil" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator Background="#FF5C99D6" Height="20"/>
-            <Label Content="UI Designer: Czasopismo Szpak" Foreground="White" FontSize="35" HorizontalAlignment="Center"/>
+            <Label Content="UI Design: Dzierżawa Anna, Magdziarz Paweł" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator Background="#FF5C99D6" Height="20"/>
-            <Label Content="Angular Developer: Anna Pierdziawa" Foreground="White" FontSize="35" HorizontalAlignment="Center"/>
+            <Label Content="DAL + Model: Anna Pierdziawa" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator Background="#FF5C99D6" Height="20"/>
-            <Label Content="JavaScript Developer: Artur Pizza" Foreground="White" FontSize="35" HorizontalAlignment="Center"/>
+            <Label Content="ViewModel: Giza Artur, Szpak Kamil, Dzierżawa Anna, Magdziarz Paweł" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+            <Label Content="Copyright © 2020 G.S.D.M. | All rights reserved." Foreground="White" FontSize="15" HorizontalAlignment="Center" Margin="0 80 0 0"/>
         </StackPanel>
     </Border>
 </UserControl>

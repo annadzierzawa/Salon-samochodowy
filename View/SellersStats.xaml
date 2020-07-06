@@ -19,17 +19,16 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" >
+            <StackPanel Grid.Column="0" Margin=" 10 50" >
                 <Label Content="Pracownik" Margin="10" FontSize="15" Foreground="White"/>
                 <TextBox Margin="5" Background="#FFACACAC" Foreground="White" BorderBrush="Beige" Text="{Binding SellersStatsVm.Pracownik}"/>
                 <Label Content="Sprzedane pojazdy" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding SellersStatsVm.SprzedanePojazdy}"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="True" Text="{Binding SellersStatsVm.SprzedanePojazdy}"/>
                 <Label Content="Łączna wartość sprzedanych pojazdów" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding SellersStatsVm.CenaSprzedanychPojazdow}"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="True" Text="{Binding SellersStatsVm.CenaSprzedanychPojazdow}"/>
                 <Label Content="Premia uzyskana z tytułu sprzedaży" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="{Binding SellersStatsVm.PremiaZeSprzedazy}"/>
-                <Label Content="Data ostatniej sprzedaży" Margin="10" FontSize="15" Foreground="White"/>
-                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="False" Text="XX-XX-XXXX"/>
+                <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" IsEnabled="True" Text="{Binding SellersStatsVm.PremiaZeSprzedazy}"/>
+                
             </StackPanel>
 
             <StackPanel Grid.Column="1" >

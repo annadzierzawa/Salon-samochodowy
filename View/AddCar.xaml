@@ -29,7 +29,7 @@
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddCarVm.KrajProdukcji, Mode=TwoWay}"/>
                 <Label Content="Kolor:" Margin="10" FontSize="15" Foreground="White"/>
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddCarVm.Kolor, Mode=TwoWay}"/>
-                <Button x:Name="button_Edytuj" Content="Edytuj" Background="#FF31577E" BorderBrush="Beige" Margin="10"/>
+                <Button x:Name="button_Edytuj" Content="Edytuj" Background="#FF31577E" BorderBrush="Beige" Margin="10" Command="{Binding AddCarVm.Edytuj}"/>
                 <Button x:Name="button_Dodaj" Content="Dodaj" Margin="10,10,-225,10" Background="#FF31577E" BorderBrush="Beige" Command="{Binding AddCarVm.DodajSamochod}"/>
 
                 <Grid>
@@ -49,7 +49,7 @@
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddCarVm.RokProdukcji, Mode=TwoWay}"/>
                 <Label Content="Cena:" Margin="10" FontSize="15" Foreground="White"/>
                 <TextBox Margin="5" FontSize="15" Background="#FFACACAC" Foreground="White" Text="{Binding AddCarVm.Cena, Mode=TwoWay}"/>
-                <Button x:Name="button_Usun" Content="Usuń"  Background="#FF31577E" BorderBrush="Beige" Margin="10"/>
+                <Button x:Name="button_Usun" Content="Usuń"  Background="#FF31577E" BorderBrush="Beige" Margin="10" Command="{Binding AddCarVm.Usun}"/>
 
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.ColumnSpan="2">

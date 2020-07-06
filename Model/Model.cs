@@ -103,6 +103,53 @@ namespace Salon_samochodowy.Model
             return true;
         }
 
+        public bool EdytujSamochod(Samochod samochod, sbyte idSamochodu)
+        {
+            if (!RepoSamochody.EdytujSamochod(samochod, idSamochodu)) return false;
+            for (int i = 0; i < Samochody.Count; i++)
+            {
+                if (Samochody[i].Id != idSamochodu) continue;
+                samochod.Id = idSamochodu;
+                Samochody[i] = new Samochod(samochod);
+            }
+
+            return true;
+        }
+
+        public bool UsunPracownika(sbyte idPracownika)
+        {
+            if (!RepoPracowników.UsunPracownika(idPracownika)) return false;
+            for (int i = 0; i < Pracownicy.Count; i++)
+            {
+                if (Pracownicy[i].Id != idPracownika) continue;
+                Pracownicy.RemoveAt(i);
+            }
+            return true;
+        }
+        public bool UsunSamochod(sbyte idSamochodu)
+        {
+            if (!RepoSamochody.UsunSamochod(idSamochodu)) return false;
+            for (int i = 0; i < Samochody.Count; i++)
+            {
+                if (Samochody[i].Id != idSamochodu) continue;
+                Samochody.RemoveAt(i);
+            }
+            return true;
+        }
+
+        public sbyte CheckIDPracownika(sbyte idZlisty)
+        {
+            var s = Pracownicy[idZlisty].Id;
+
+            return (sbyte)s;
+        }
+        public sbyte CheckIDSamochodu(sbyte idZlisty)
+        {
+            var s = Samochody[idZlisty].Id;
+
+            return (sbyte)s;
+        }
+
 
     }
   

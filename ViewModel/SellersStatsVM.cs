@@ -117,7 +117,7 @@ namespace Salon_samochodowy.ViewModel
             PremiaZeSprzedazy = "";
         }
 
-        private void LadujInformacje(int IdPracownika)
+        private void LadujInformacje(int IdPracownika, int idZListy)
         {
             double cenaSuma = 0;
             double premiasuma = 0;
@@ -125,7 +125,7 @@ namespace Salon_samochodowy.ViewModel
             
             foreach (var s in Sprzedaze)
             {
-                if (IdPracownika + 1 == s.IdPracownika)
+                if (IdPracownika == s.IdPracownika)
                 {
                     cenaSuma += s.Cena;
                     premiasuma += 0.02 * s.Cena;
@@ -133,7 +133,7 @@ namespace Salon_samochodowy.ViewModel
                 }
             }
 
-            Pracownik = Pracownicy[IdPracownika].Imie + " " + Pracownicy[IdPracownika].Nazwisko;
+            Pracownik = Pracownicy[idZListy].Imie + " " + Pracownicy[idZListy].Nazwisko;
             CenaSprzedanychPojazdow = cenaSuma.ToString();
             PremiaZeSprzedazy = premiasuma.ToString();
             SprzedanePojazdy = sprzedaneCount.ToString();
@@ -154,7 +154,8 @@ namespace Salon_samochodowy.ViewModel
                             
                             if (ZaznaczonyPracownik != -1)
                             {
-                                LadujInformacje(ZaznaczonyPracownik);
+                                var s= model.CheckIDPracownika((sbyte)ZaznaczonyPracownik);
+                                LadujInformacje(s, ZaznaczonyPracownik);
                             }
                             else
                             {
