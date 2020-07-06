@@ -16,7 +16,6 @@ namespace Salon_samochodowy.Model
         //obiekt w któym przechowujemy dane o zalogowanym pracowniku
         public Pracownik Zalogowany { get; set; }
 
-
         public Model()
         {
             //pobieramy z MYSQLa dane do kolekcjii

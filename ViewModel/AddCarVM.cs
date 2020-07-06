@@ -18,7 +18,7 @@ namespace Salon_samochodowy.ViewModel
         private double cena;
         private int moc;
         private int zaznaczonySamochod;
-        public List<string> samochodyLista = new List<string>();
+        public ObservableCollection<string> samochodyLista = new ObservableCollection<string>();
 
         #endregion
 
@@ -28,7 +28,13 @@ namespace Salon_samochodowy.ViewModel
         public AddCarVM(Model model)
         {
             this.model = model;
+            ZaladujSamochodyDoListy();
+        }
+
+        public void ZaladujSamochodyDoListy()
+        {
             Samochody = model.Samochody;
+            samochodyLista = new ObservableCollection<string>();
             foreach (var samochod in Samochody)
             {
                 samochodyLista.Add($"{samochod.Marka} {samochod.ModelPojazdu}");
@@ -131,7 +137,7 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
-        public List<string> SamochodyLista
+        public ObservableCollection<string> SamochodyLista
         {
             get => samochodyLista;
             set
@@ -185,8 +191,10 @@ namespace Salon_samochodowy.ViewModel
                     {
                         var samochod = new Samochod(Marka, modelPojazdu, Silnik, Kolor, KrajProdukcji, rokProdukcji, Cena, Moc);
                         if (!model.DodajSamochod(samochod))
-                            return;
+                            return; 
+                        ZaladujSamochodyDoListy();
                         ClearAll();
+                        onPropertyChanged(nameof(samochodyLista));
                         onPropertyChanged(nameof(marka));
                         onPropertyChanged(nameof(modelPojazdu));
                         onPropertyChanged(nameof(cena));
@@ -220,7 +228,9 @@ namespace Salon_samochodowy.ViewModel
                         if (!model.EdytujSamochod(samochod, id)) return;
                         System.Windows.MessageBox.Show($"Samochod został edytowany! \n " +
                                                        $"{Marka} {modelPojazdu}");
+                        ZaladujSamochodyDoListy();
                         ClearAll();
+                        onPropertyChanged(nameof(samochodyLista));
                         onPropertyChanged(nameof(marka));
                         onPropertyChanged(nameof(modelPojazdu));
                         onPropertyChanged(nameof(cena));
@@ -252,6 +262,8 @@ namespace Salon_samochodowy.ViewModel
                         var s = model.CheckIDSamochodu((sbyte)idToRemove);
                         model.UsunSamochod(s);
                         MessageBox.Show($" Samochod {Marka} {modelPojazdu} został usunięty z bazy.");
+                        ZaladujSamochodyDoListy();
+                        onPropertyChanged(nameof(samochodyLista));
                     },
                     arg => ZaznaczonySamochod != -1
                 );
@@ -276,7 +288,7 @@ namespace Salon_samochodowy.ViewModel
                             }
                             else
                             {
-                                MessageBox.Show("Złe dane!");
+                                //MessageBox.Show("Złe dane!");
                                 ClearAll();
                             }
                         },
