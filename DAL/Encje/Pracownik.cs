@@ -17,7 +17,7 @@ namespace Salon_samochodowy.DAL.Encje
 
         #region Konstruktory
 
-        //obiekt na podstawie MySQLDataReader
+        //worzymy obiekt na podstawie MySQLDataReader
         public Pracownik(MySqlDataReader reader)
         {
             Id = sbyte.Parse(reader["idPracownika"].ToString());
@@ -28,7 +28,7 @@ namespace Salon_samochodowy.DAL.Encje
             Premia = double.Parse(reader["premia"].ToString());
         }
 
-        //obiekt który nie istnieje w bazie - brak ID
+        //tworzymy obiekt który jeszcze nie istnieje w bazie - brak ID
         public Pracownik(string login, string password, string imie, string nazwisko, double premia)
         {
             Id = null;
@@ -39,7 +39,7 @@ namespace Salon_samochodowy.DAL.Encje
             Premia = premia;
         }
 
-        //kopiowanie obiektu
+        //kopiujemy obiekt
         public Pracownik(Pracownik pracownik)
         {
             Id = pracownik.Id;
@@ -53,18 +53,17 @@ namespace Salon_samochodowy.DAL.Encje
         #endregion
 
 
-
         #region Metody
-        //metoda generuje string dla INSERT
+        //generowanie stringa dla INSERT QUERY
         public string ToInsert()
         {
             return $"('{Login}', '{Password}', '{Imie}', '{Nazwisko}', '{Premia}')";
         }
 
-        //przeciążenie dla Contains w listach
+        //przeciążenie dla Contains w listach, służace do porównywania.
         public override bool Equals(object obj)
         {
-            //nie porównujemy ID
+            //brak porównania po ID
             var pracownik = obj as Pracownik;
             if (pracownik is null) return false;
             if (Login.ToLower() != pracownik.Login.ToLower()) return false;
@@ -75,6 +74,7 @@ namespace Salon_samochodowy.DAL.Encje
             return true;
         }
 
+        //pobranie Hashkodu obiektu
         public override int GetHashCode()
         {
             return base.GetHashCode();

@@ -19,7 +19,7 @@ namespace Salon_samochodowy.DAL.Encje
 
         #region Konstruktory
 
-        //obiekt na podstawie MySQLDataReader
+        //tworzymy obiekt na podstawie MySQLDataReader
         public Samochod(MySqlDataReader reader)
         {
             Id = sbyte.Parse(reader["idModelu"].ToString());
@@ -33,7 +33,7 @@ namespace Salon_samochodowy.DAL.Encje
             Moc = int.Parse(reader["moc"].ToString());
         }
 
-        //obiekt który nie istnieje w bazie - brak ID
+        //tworzymy obiekt który jeszcze nie istnieje w bazie - brak ID
         public Samochod(string marka, string modelPojazdu, string silnik, string kolor, 
                         string krajProdukcji, string dataProdukcji, double cena, int moc)
         {
@@ -48,7 +48,7 @@ namespace Salon_samochodowy.DAL.Encje
             Moc = moc;
         }
 
-        //kopiowanie obiektu
+        //kopiujemy obiekt
         public Samochod(Samochod pracownik)
         {
             Id = pracownik.Id;
@@ -64,7 +64,7 @@ namespace Salon_samochodowy.DAL.Encje
         #endregion
 
         #region Metody
-        //metoda generuje string dla INSERT
+        //generowanie stringa dla INSERT QUERY
         public string ToInsert()
         {
             return $"('{Marka}', '{ModelPojazdu}', '{Silnik}', '{Moc}', '{Kolor}', '{KrajProdukcji}', '{DataProdukcji}', '{Cena}')";

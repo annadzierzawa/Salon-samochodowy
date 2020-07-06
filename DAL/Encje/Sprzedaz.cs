@@ -13,6 +13,7 @@ namespace Salon_samochodowy.DAL.Encje
 
         #region Kontruktory
 
+        //tworzymy obiekt na podstawie MySQLDataReader
         public Sprzedaz(MySqlDataReader reader)
         {
             IdSprzedazy = sbyte.Parse(reader["idSprzedazy"].ToString());
@@ -21,6 +22,7 @@ namespace Salon_samochodowy.DAL.Encje
             Cena = double.Parse(reader["cena"].ToString());
         }
 
+        //tworzymy obiekt który jeszcze nie istnieje w bazie - brak ID
         public Sprzedaz(sbyte idPracownika, sbyte idSamochodu, double cena)
         {
             IdSprzedazy = null;
@@ -30,10 +32,9 @@ namespace Salon_samochodowy.DAL.Encje
         }
         #endregion
 
-
         #region Metody
 
-        //metoda generuje string dla INSERT
+        //generowanie stringa dla INSERT QUERY
         public string ToInsert()
         {
             return $"('{IdPracownika}', '{IdSamochodu}', '{Cena}')";

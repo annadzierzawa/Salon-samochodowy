@@ -8,17 +8,18 @@ namespace Salon_samochodowy.Model
 
     public class Model
     {
-        //bazy danych
+        //bazy danych w postaci kolekcji
         public ObservableCollection<Pracownik> Pracownicy { get; set; } = new ObservableCollection<Pracownik>();
         public ObservableCollection<Samochod> Samochody { get; set; } = new ObservableCollection<Samochod>();
         public ObservableCollection<Sprzedaz> Sprzedaze { get; set; } = new ObservableCollection<Sprzedaz>();
 
+        //obiekt w któym przechowujemy dane o zalogowanym pracowniku
         public Pracownik Zalogowany { get; set; }
 
 
         public Model()
         {
-            //pobranie danych do kolekcjii
+            //pobieramy z MYSQLa dane do kolekcjii
             var pracownicy = RepoPracowników.PobierzWszystkichPracownikow();
             var samochody = RepoSamochody.PobierzWszystkieSamochody();
             var sprzedaze = RepoSprzedazy.PobierzWszystkieSprzedaze();
@@ -39,15 +40,10 @@ namespace Salon_samochodowy.Model
             Zalogowany = null;
         }
 
-
+        // Szukanie obiektów w bazach po ID
         private Pracownik ZnajdzPracownikaPoID(sbyte id)
         {
             return Pracownicy.FirstOrDefault(p => p.Id == id);
-        }
-
-        public Pracownik ZnajdzPracownikaPoLoginie(string login)
-        {
-            return Pracownicy.FirstOrDefault(p => p.Login == login);
         }
 
         private Samochod ZnajdzSamochodPoID(sbyte id)
@@ -60,18 +56,14 @@ namespace Salon_samochodowy.Model
             return Sprzedaze.FirstOrDefault(sp => sp.IdSprzedazy == id);
         }
 
-        public bool IfSprzedazInDB(Sprzedaz sprzedaz) => Sprzedaze.Contains(sprzedaz);
-
-        public bool DodajSprzedaz(Sprzedaz sprzedaz)
+        public Pracownik ZnajdzPracownikaPoLoginie(string login)
         {
-            if (IfSprzedazInDB(sprzedaz)) return false;
-            if (!RepoSprzedazy.DodajSprzedazDoBazy(sprzedaz)) return false;
-            Sprzedaze.Add(sprzedaz);
-            return true;
+            return Pracownicy.FirstOrDefault(p => p.Login == login);
         }
 
-        public bool IfPracownikInDB(Pracownik pracownik) => Pracownicy.Contains(pracownik);
 
+        // Dodawanie do baz: Pracownika, Samochodu i Sprzedaży
+        public bool IfPracownikInDB(Pracownik pracownik) => Pracownicy.Contains(pracownik);
         public bool DodajPracownika(Pracownik pracownik)
         {
             if (IfPracownikInDB(pracownik)) return false;
@@ -81,7 +73,6 @@ namespace Salon_samochodowy.Model
         }
 
         public bool IfSamochodInDB(Samochod samochod) => Samochody.Contains(samochod);
-
         public bool DodajSamochod(Samochod samochod)
         {
             if (IfSamochodInDB(samochod)) return false;
@@ -90,6 +81,17 @@ namespace Salon_samochodowy.Model
             return true;
         }
 
+        public bool IfSprzedazInDB(Sprzedaz sprzedaz) => Sprzedaze.Contains(sprzedaz);
+        public bool DodajSprzedaz(Sprzedaz sprzedaz)
+        {
+            if (IfSprzedazInDB(sprzedaz)) return false;
+            if (!RepoSprzedazy.DodajSprzedazDoBazy(sprzedaz)) return false;
+            Sprzedaze.Add(sprzedaz);
+            return true;
+        }
+
+
+        //Edycja Pracownika i Samochodu w bazach
         public bool EdytujPracownika(Pracownik pracownik, sbyte idPracownika)
         {
             if (!RepoPracowników.EdytujPracownika(pracownik, idPracownika)) return false;
@@ -116,6 +118,8 @@ namespace Salon_samochodowy.Model
             return true;
         }
 
+
+        //Usuwanie Pracownika i Samochodu z baz
         public bool UsunPracownika(sbyte idPracownika)
         {
             if (!RepoPracowników.UsunPracownika(idPracownika)) return false;
@@ -126,6 +130,7 @@ namespace Salon_samochodowy.Model
             }
             return true;
         }
+
         public bool UsunSamochod(sbyte idSamochodu)
         {
             if (!RepoSamochody.UsunSamochod(idSamochodu)) return false;
@@ -137,6 +142,8 @@ namespace Salon_samochodowy.Model
             return true;
         }
 
+
+        //Wyciągnięcie ID w MYSQL po ID z listy
         public sbyte CheckIDPracownika(sbyte idZlisty)
         {
             var s = Pracownicy[idZlisty].Id;
