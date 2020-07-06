@@ -26,8 +26,7 @@
                     BorderBrush="Beige"
                     Command="{Binding LoginVm.Loguj}"
                     CommandParameter="{Binding ElementName=window}"
-                    IsEnabled="{Binding LoginVm.LoginDostepny, Mode=OneWay}"
-                    />
+            />
         </StackPanel>
     </Border>
 </Window>

@@ -81,7 +81,9 @@ namespace Salon_samochodowy
 
         private void Logout_OnClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            LoginScreen ls = new LoginScreen();
+            ls.Show();
+            Close();
         }
 
         private void AccountInfo_OnClick(object sender, RoutedEventArgs e)

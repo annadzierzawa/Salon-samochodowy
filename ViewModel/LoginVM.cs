@@ -15,7 +15,7 @@ namespace Salon_samochodowy.ViewModel
 
         private Model model = null;
         private string login, password;
-        private bool loginDostepny = true;
+        
 
         #endregion
 
@@ -51,15 +51,7 @@ namespace Salon_samochodowy.ViewModel
                 onPropertyChanged(nameof(Password));
             }
         }
-        public bool LoginDostepny
-        {
-            get => loginDostepny;
-            set
-            {
-                loginDostepny = value;
-                onPropertyChanged(nameof(LoginDostepny));
-            }
-        }
+
 
         #endregion
 
@@ -68,8 +60,6 @@ namespace Salon_samochodowy.ViewModel
         {
             Login = "";
             Password = "";
-            LoginDostepny = true;
-            onPropertyChanged(nameof(LoginDostepny));
         }
 
 
@@ -101,7 +91,7 @@ namespace Salon_samochodowy.ViewModel
                                 ClearAll();
                             }
                         },
-                        arg => (Login != "") 
+                        arg => (Login != "" && Password != "") 
                     );
 
                 return loguj;
