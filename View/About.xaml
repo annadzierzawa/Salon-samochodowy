@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Salon_samochodowy.View"
              mc:Ignorable="d" 
-             d:DesignHeight="540" d:DesignWidth="1010" Background="#91c5ff">
+             d:DesignHeight="540" d:DesignWidth="1010" Background="#FFACACAC">
     <!-- Blok Główny --> 
     <Border Background="#FF31577E" CornerRadius="25"  Margin="10">
         <StackPanel Margin="25" Background="#FF5C99D6">
