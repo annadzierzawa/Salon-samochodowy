@@ -9,7 +9,8 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" Height="600" Width="1080" Foreground="White" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
         Title="MainWindow">
-     
+
+    <!-- Deklaracja paneli wraz z ViewModelami -->
     <Window.Resources>
         <DataTemplate x:Name="addCarTemplate" DataType="{x:Type vms:AddCarVM}">
             <views:AddCar DataContext="{Binding}"/>
@@ -27,6 +28,7 @@
             <views:SellersStats DataContext="{Binding}"/>
         </DataTemplate>
 
+        <!-- Deklaracja otwierania i zamykania menu navigacji -->
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
@@ -40,6 +42,8 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
+
+    <!-- Deklaracja wyzwalaczy navigacji -->
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
@@ -48,6 +52,8 @@
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
+
+    <!-- Blok Główny -->
     <Grid Background="#FFDEDEDE">
         <ContentControl Content="{Binding}" Margin="70,60,0,0"/>
         <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1010"/>
@@ -55,6 +61,8 @@
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
+
+            <!-- Nawigacja profilu -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock x:Name="txtUserName" Text="Dealer" VerticalAlignment="Center" FontSize="16"/>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
@@ -72,8 +80,12 @@
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
+
+            <!-- Header Okna -->
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Car rental service system</TextBlock>
         </Grid>
+
+        <!-- Layout navigacji -->
         <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#FF31577E">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
@@ -94,9 +106,9 @@
                     <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" >
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
                     </Button>
-
-                    <Image Height="80" VerticalAlignment="Bottom"/>
                 </Grid>
+                
+                <!-- Kontrolki navigacji -->
                 <ListView x:Name="ListViewMenu" Foreground="#FF5C99D6" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListViewItem x:Name="ItemHome" Height="60" MouseLeftButtonUp="ItemHome_MouseDoubleClick">
                         <StackPanel Orientation="Horizontal">
