@@ -12,6 +12,7 @@ namespace Salon_samochodowy.ViewModel
     using Salon_samochodowy.DAL.Repozytoria;
     using Salon_samochodowy.View;
     using System.Collections.ObjectModel;
+    using System.Security.Cryptography.X509Certificates;
     using System.Data.SqlTypes;
     using System.Windows;
     using System.Windows.Input;
@@ -200,7 +201,7 @@ namespace Salon_samochodowy.ViewModel
                         onPropertyChanged(nameof(silnik));
                         System.Windows.MessageBox.Show($"{Marka} {ModelPojazdu} został dodany do bazy!");
                     },
-                    arg => (Marka != "") && (ModelPojazdu != "") && (Silnik != "") && (Kolor != "") && (KrajProdukcji != "") && (RokProdukcji != "") && (Moc != 0) && (Cena != 0)
+                    arg => (Marka != "") && (ModelPojazdu != "") && (Silnik != "") && (Kolor != "") && (KrajProdukcji != "") && (RokProdukcji != "") && (Moc > 0) && (Cena > 0)
                     );
                 return dodajSamochod;
             }
@@ -253,6 +254,15 @@ namespace Salon_samochodowy.ViewModel
                         var idToRemove = ZaznaczonySamochod;
                         var s = model.CheckIDSamochodu((sbyte)idToRemove);
                         model.UsunSamochod(s);
+                        ClearAll();
+                        onPropertyChanged(nameof(marka));
+                        onPropertyChanged(nameof(modelPojazdu));
+                        onPropertyChanged(nameof(cena));
+                        onPropertyChanged(nameof(moc));
+                        onPropertyChanged(nameof(kolor));
+                        onPropertyChanged(nameof(rokProdukcji));
+                        onPropertyChanged(nameof(krajProdukcji));
+                        onPropertyChanged(nameof(silnik));
                         MessageBox.Show($" Samochod {Marka} {modelPojazdu} został usunięty z bazy.");
                     },
                     arg => ZaznaczonySamochod != -1
@@ -261,11 +271,6 @@ namespace Salon_samochodowy.ViewModel
                 return usun;
             }
         }
-
-
-
-
-
 
         private ICommand zaladujInformacje = null;
         public ICommand ZaladujInformacje
