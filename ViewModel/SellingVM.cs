@@ -212,7 +212,7 @@ namespace Salon_samochodowy.ViewModel
                     sprzedajPojazd = new RelayCommand(
                         arg =>
                         {
-                            var sprzedaz = new Sprzedaz(Convert.ToSByte(model.Zalogowany.Id), Convert.ToSByte(zaznaczonySamochod + 1), Cena);
+                            var sprzedaz = new Sprzedaz(Convert.ToSByte(model.Zalogowany.Id), model.CheckIDSamochodu(Convert.ToSByte(zaznaczonySamochod)), Cena);
                             if (!model.DodajSprzedaz(sprzedaz))
                                 return;
                             MessageBox.Show("Pojazd sprzedany!");
