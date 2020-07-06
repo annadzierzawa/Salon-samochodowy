@@ -25,7 +25,7 @@ namespace Salon_samochodowy.ViewModel
         private double cena;
         private int moc;
         private int zaznaczonySamochod;
-        public List<string> samochodyLista = new List<string>();
+        public ObservableCollection<string> samochodyLista = new ObservableCollection<string>();
 
         #endregion
 
@@ -35,6 +35,12 @@ namespace Salon_samochodowy.ViewModel
         {
             this.model = model;
             Samochody = model.Samochody;
+            ZaladujSamochodyDoListy();
+        }
+
+        private void ZaladujSamochodyDoListy()
+        {
+            samochodyLista = new ObservableCollection<string>();
             foreach (var samochod in Samochody)
             {
                 samochodyLista.Add($"{samochod.Marka} {samochod.ModelPojazdu} z rocznika {samochod.DataProdukcji} w cenie {samochod.Cena} zł");
@@ -138,7 +144,7 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
-        public List<string> SamochodyLista
+        public ObservableCollection<string> SamochodyLista
         {
             get => samochodyLista;
             set
@@ -194,7 +200,7 @@ namespace Salon_samochodowy.ViewModel
                             }
                             else
                             {
-                                MessageBox.Show("Złe dane!");
+                                //MessageBox.Show("Złe dane!");
                                 ClearAll();
                             }
                         },
@@ -218,6 +224,8 @@ namespace Salon_samochodowy.ViewModel
                             var sprzedaz = new Sprzedaz(Convert.ToSByte(model.Zalogowany.Id), model.CheckIDSamochodu(Convert.ToSByte(zaznaczonySamochod)), Cena);
                             if (!model.DodajSprzedaz(sprzedaz))
                                 return;
+                            ZaladujSamochodyDoListy();
+                            onPropertyChanged(nameof(samochodyLista));
                             MessageBox.Show("Pojazd sprzedany!");
                         },
                         arg => true

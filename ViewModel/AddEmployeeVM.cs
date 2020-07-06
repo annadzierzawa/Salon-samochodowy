@@ -23,7 +23,7 @@ namespace Salon_samochodowy.ViewModel
         private bool dodawanieDostepne = true;
         private bool edycjaDostepna = false;
         private int zaznaczonyPracownik;
-        public List<string> pracownicyLista = new List<string>();
+        public ObservableCollection<string> pracownicyLista = new ObservableCollection<string>();
 
         #endregion
 
@@ -33,10 +33,17 @@ namespace Salon_samochodowy.ViewModel
         {
             this.model = model;
             Pracownicy = model.Pracownicy;
+            ZaladujPracownikowDoListy();
+        }
+
+        private void ZaladujPracownikowDoListy()
+        {
+            pracownicyLista = new ObservableCollection<string>();
             foreach (var prac in Pracownicy)
             {
                 pracownicyLista.Add($"{prac.Imie} {prac.Nazwisko}");
             }
+
         }
 
         #endregion
@@ -118,7 +125,7 @@ namespace Salon_samochodowy.ViewModel
             }
         }
 
-        public List<string> PracownicyLista
+        public ObservableCollection<string> PracownicyLista
         {
             get => pracownicyLista;
             set
@@ -165,7 +172,9 @@ namespace Salon_samochodowy.ViewModel
                         if (!model.DodajPracownika(pracownik)) return;
                         System.Windows.MessageBox.Show($"Pracownik został dodana do bazy! \n " +
                                                        $"{Imie} {Nazwisko} | {Login} {Password}");
+                        ZaladujPracownikowDoListy();
                         ClearAll();
+                        onPropertyChanged(nameof(pracownicyLista));
                         onPropertyChanged(nameof(imie));
                         onPropertyChanged(nameof(nazwisko));
                         onPropertyChanged(nameof(login));
@@ -196,8 +205,9 @@ namespace Salon_samochodowy.ViewModel
                         if (!model.EdytujPracownika(pracownik, id)) return;
                         System.Windows.MessageBox.Show($"Pracownik został edytowany! \n " +
                                                        $"{Imie} {Nazwisko} | {Login} {Password}");
+                        ZaladujPracownikowDoListy();
                         ClearAll();
-                        onPropertyChanged(nameof(imie));
+                        onPropertyChanged(nameof(pracownicyLista)); onPropertyChanged(nameof(imie));
                         onPropertyChanged(nameof(nazwisko));
                         onPropertyChanged(nameof(login));
                         onPropertyChanged(nameof(password));
@@ -223,6 +233,9 @@ namespace Salon_samochodowy.ViewModel
                         var idToRemove = ZaznaczonyPracownik;
                         var s = model.CheckIDPracownika((sbyte)idToRemove);
                         model.UsunPracownika(s);
+                        ZaladujPracownikowDoListy();
+                        ClearAll();
+                        onPropertyChanged(nameof(pracownicyLista));
                         MessageBox.Show($" Pracownik {Imie} {Nazwisko} został usunięty z bazy.");
                     },
                     arg => ZaznaczonyPracownik != -1
@@ -248,7 +261,7 @@ namespace Salon_samochodowy.ViewModel
                             }
                             else
                             {
-                                MessageBox.Show("Złe dane!");
+                               // MessageBox.Show("Złe dane!");
                                 ClearAll();
                             }
                         },
