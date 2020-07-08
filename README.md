@@ -20,4 +20,5 @@ Postęp prac:
 
 Linki:
 * [Katalog zawierający pliki projektu](https://github.com/annadzierzawa/Salon-samochodowy)
-* [Katalog dokumentacji](https://github.com/annadzierzawa/Salon-samochodowy)
+* [Wersja release](https://github.com/annadzierzawa/Salon-samochodowy/tree/master/1.0-RELEASE)
+* [Katalog dokumentacji](https://github.com/annadzierzawa/Salon-samochodowy/tree/master/1.0-DOCUMENTATION)
